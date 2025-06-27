@@ -1,0 +1,2347 @@
+<html lang="es"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recolecta Amor ❤️ – v16 Ultra Premium</title>
+  <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&amp;family=Fredoka+One&amp;display=swap" rel="stylesheet">
+  <style>
+    :root {--pink:#ff69b4;--deep:#ff1493;--bg1:#ffe4ec;--bg2:#ffc1d3;}
+    *{margin:0;padding:0;box-sizing:border-box;}
+    /* Fondos de pantalla */
+    .bg-rosa { background:linear-gradient(-45deg,#ffe4ec,#ffc1d3,#ffe9f0,#ffdee5); }
+    .bg-verde { background:linear-gradient(-45deg,#e8f5e8,#c8e6c9,#e1f5fe,#a8e6cf); }
+    .bg-azul { background:linear-gradient(-45deg,#e3f2fd,#bbdefb,#e1f5fe,#81d4fa); }
+    .bg-violeta { background:linear-gradient(-45deg,#f3e5f5,#e1bee7,#f8bbd9,#ce93d8); }
+    .bg-naranja { background:linear-gradient(-45deg,#fff3e0,#ffcc80,#ffe0b2,#ffab40); }
+    .bg-amarillo { background:linear-gradient(-45deg,#fffde7,#fff59d,#ffff8d,#ffeb3b); }
+    .bg-cyan { background:linear-gradient(-45deg,#e0f2f1,#80cbc4,#b2dfdb,#4db6ac); }
+    .bg-coral { background:linear-gradient(-45deg,#fce4ec,#f8bbd9,#f48fb1,#ec407a); }
+    .bg-lavanda { background:linear-gradient(-45deg,#f3e5f5,#e1bee7,#d1c4e9,#b39ddb); }
+    .bg-menta { background:linear-gradient(-45deg,#e8f5e8,#c8e6c9,#dcedc1,#aed581); }
+    .bg-durazno { background:linear-gradient(-45deg,#fff8e1,#ffecb3,#ffe082,#ffd54f); }
+    .bg-multicolor { background:linear-gradient(-45deg,#ff6b6b,#4ecdc4,#45b7d1,#96ceb4,#ffeaa7,#dda0dd,#98d8c8); }
+    /* Nuevos fondos */
+    .bg-anochecer { background:linear-gradient(-45deg,#2c3e50,#4a69bd,#6a89cc,#82ccdd); }
+    .bg-amanecer { background:linear-gradient(-45deg,#ff9966,#ff5e62,#ffa07a,#ffb570); }
+    .bg-bosque { background:linear-gradient(-45deg,#134e5e,#71b280,#2d5a32,#60a561); }
+    .bg-galaxia { background:linear-gradient(-45deg,#0f0c29,#302b63,#24243e,#4b37a3); }
+    .bg-aurora { background:linear-gradient(-45deg,#a8ff78,#78ffd6,#56f2c0,#1cb5e0); }
+    .bg-atardecer { background:linear-gradient(-45deg,#f12711,#f5af19,#ff8008,#ff4e00); }
+    .bg-mistico { background:linear-gradient(-45deg,#8a2387,#e94057,#f27121,#c94b4b); }
+    .bg-oceano { background:linear-gradient(-45deg,#4b6cb7,#182848,#2980b9,#2c3e50); }
+
+    /* Animaciones de fondo */
+    .bg-animate { background-size:400% 400%; animation:gradientBG 8s ease infinite; }
+    .bg-pulse { animation:pulseAnim 4s ease-in-out infinite; }
+    .bg-wave { animation:waveAnim 6s ease-in-out infinite; }
+    .bg-spin { animation:spinAnim 20s linear infinite; }
+    .bg-zoom { animation:zoomAnim 5s ease-in-out infinite; }
+    .bg-float { animation:floatAnim 3s ease-in-out infinite; }
+    /* Nueva animación */
+    .bg-sparkle { animation:sparkleAnim 7s ease-in-out infinite; }
+    
+    @keyframes gradientBG{0%,100%{background-position:0% 50%;}50%{background-position:100% 50%;}}
+    @keyframes pulseAnim{0%,100%{filter:brightness(1);}50%{filter:brightness(1.2);}}
+    @keyframes waveAnim{0%,100%{transform:scale(1);}50%{transform:scale(1.05);}}
+    @keyframes spinAnim{0%{background-position:0% 0%;}100%{background-position:200% 200%;}}
+    @keyframes zoomAnim{0%,100%{background-size:400% 400%;}50%{background-size:500% 500%;}}
+    @keyframes floatAnim{0%,100%{filter:hue-rotate(0deg);}50%{filter:hue-rotate(30deg);}}
+    @keyframes sparkleAnim{0%{filter:contrast(100%) brightness(100%);}50%{filter:contrast(120%) brightness(110%);}100%{filter:contrast(100%) brightness(100%);}}
+
+    html,body{
+      height:100%;
+      font-family:'Indie Flower',cursive; 
+      overflow:hidden;
+      transition:all 0.5s ease;
+    }
+    
+    /* Pantalla de carga */
+    #loadingScreen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      z-index: 1000;
+    }
+
+    #loadingBar {
+      width: 200px;
+      height: 10px;
+      background: rgba(255,255,255,0.3);
+      border-radius: 5px;
+      overflow: hidden;
+      margin-top: 20px;
+    }
+
+    #loadingProgress {
+      width: 0%;
+      height: 100%;
+      background: linear-gradient(90deg, #00ff88, #00ccff);
+      transition: width 0.3s ease;
+    }
+    
+    /* Partículas flotantes */
+    .particles {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .particle {
+      position: absolute;
+      font-size: 20px;
+      animation: particleFloat 10s linear infinite;
+      opacity: 0.6;
+    }
+    @keyframes particleFloat {
+      0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+      10% { opacity: 0.6; }
+      90% { opacity: 0.6; }
+      100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+    }
+    
+    /* Arcoíris flotante del menú */
+    .rainbow-float {
+      position: absolute;
+      font-size: 30px;
+      animation: rainbowFloat 8s ease-in-out infinite;
+      z-index: 0;
+    }
+    @keyframes rainbowFloat {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+    
+    canvas{position:absolute;top:0;left:0;width:100vw;height:100vh;z-index:1;}
+    
+    .panel{
+      position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+      background:rgba(255,255,255,0.95);padding:20px;border-radius:20px;
+      min-width:300px;max-height:85vh;overflow-y:auto;text-align:center;z-index:10;
+      box-shadow:0 10px 30px rgba(0,0,0,0.2);
+      border:3px solid rgba(255,255,255,0.8);
+      backdrop-filter:blur(10px);
+      animation:panelAppear 0.3s ease-out;
+    }
+    @keyframes panelAppear {
+      0% { transform: translate(-50%,-50%) scale(0.8); opacity: 0; }
+      100% { transform: translate(-50%,-50%) scale(1); opacity: 1; }
+    }
+    
+    h1,h2{
+      font-family:'Fredoka One',cursive;color:var(--deep);margin-bottom:16px;
+      text-shadow:2px 2px 4px rgba(0,0,0,0.1);
+      animation:titleBounce 2s ease-in-out infinite;
+    }
+    @keyframes titleBounce {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+    
+    button{
+      padding:10px 18px;margin:5px;border:none;border-radius:15px;
+      background:linear-gradient(45deg,var(--pink),var(--deep));
+      color:#fff;font-size:1rem;cursor:pointer;
+      transition:all 0.3s ease;
+      box-shadow:0 4px 15px rgba(255,105,180,0.4);
+      font-weight:bold;
+    }
+    button:hover{
+      background:linear-gradient(45deg,var(--deep),var(--pink));
+      transform:translateY(-2px);
+      box-shadow:0 6px 20px rgba(255,105,180,0.6);
+    }
+    button:active{transform:translateY(0px);}
+    
+    #storeGrid,#powerGrid,#fundsGrid,#backgroundGrid{
+      display:grid;gap:10px;margin:10px 0;
+      grid-template-columns:repeat(auto-fit,minmax(90px,1fr));
+    }
+    
+    ul{max-height:300px;overflow-y:auto;text-align:left;margin:10px 0;padding:0;list-style:none;}
+    
+    #diamondBar,#heartBar,#totalHeartsBar,#arcoirisBar{
+      position:absolute;top:8px;
+      background:rgba(255,255,255,0.9);padding:8px 12px;border-radius:12px;
+      font-weight:bold;z-index:9;
+      box-shadow:0 2px 10px rgba(0,0,0,0.1);
+      animation:hudPulse 3s ease-in-out infinite;
+    }
+    @keyframes hudPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+    
+    #diamondBar{left:12px;}
+    #heartBar{left:120px;}
+    #totalHeartsBar{left:220px;}
+    #arcoirisBar{left:350px;}
+    
+    #lifeBar{position:absolute;top:56px;left:12px;display:flex;gap:4px;z-index:5;}
+    #lifeBar img{width:30px;animation:heartBeat 1.5s ease-in-out infinite;}
+    @keyframes heartBeat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+    
+    #shieldIcon,#imanIcon,#dblIcon,#freezeIcon,#magicIcon,#boostIcon{
+      position:absolute;top:56px;width:40px;display:none;z-index:5;
+      animation:iconGlow 2s ease-in-out infinite;
+    }
+    @keyframes iconGlow {
+      0%, 100% { filter: drop-shadow(0 0 5px rgba(255,255,255,0.8)); }
+      50% { filter: drop-shadow(0 0 15px rgba(255,255,255,1)); }
+    }
+    
+    #shieldIcon{left:120px;}
+    #imanIcon{left:170px;}
+    #dblIcon{left:220px;}
+    #freezeIcon{left:270px;}
+    #magicIcon{left:320px;}
+    #boostIcon{left:370px;}
+    
+    #shieldTimer,#imanTimer,#dblTimer,#freezeTimer,#magicTimer,#boostTimer{
+      position:absolute;top:100px;font-size:14px;
+      background:rgba(255,255,255,0.8);padding:4px 8px;border-radius:10px;
+      display:none;z-index:5;font-weight:bold;
+      animation:timerPulse 1s ease-in-out infinite;
+    }
+    @keyframes timerPulse {
+      0%, 100% { opacity: 0.8; }
+      50% { opacity: 1; }
+    }
+    
+    #shieldTimer{left:120px;}
+    #imanTimer{left:170px;}
+    #dblTimer{left:220px;}
+    #freezeTimer{left:270px;}
+    #magicTimer{left:320px;}
+    #boostTimer{left:370px;}
+    
+    #pauseBtn{
+      position:absolute;top:16px;right:16px;font-size:1.6rem;border-radius:50%;
+      background:linear-gradient(45deg,var(--pink),var(--deep));
+      color:#fff;padding:10px;border:none;z-index:5;display:none;
+      box-shadow:0 4px 15px rgba(255,105,180,0.5);
+      transition:all 0.3s ease;
+    }
+    #pauseBtn:hover{transform:scale(1.1);}
+    
+    .message{
+      position:absolute;bottom:20%;left:50%;transform:translateX(-50%);
+      color:#fff;font-size:2em;text-shadow:0 0 10px #000;z-index:2;
+      font-family:'Fredoka One',cursive;
+      animation:messageFloat 3s ease-in-out infinite;
+    }
+    @keyframes messageFloat {
+      0%, 100% { transform: translateX(-50%) translateY(0px); }
+      50% { transform: translateX(-50%) translateY(-10px); }
+    }
+    
+    #levelInfo{
+      position:absolute;top:10px;left:50%;transform:translateX(-50%);
+      color:rgba(255,255,255,0.95);font-size:2.2em;font-family:'Fredoka One',cursive;
+      text-shadow:0 0 15px rgba(0,0,0,0.8);pointer-events:none;z-index:2;
+      animation:levelGlow 2s ease-in-out infinite;
+    }
+    @keyframes levelGlow {
+      0%, 100% { text-shadow: 0 0 15px rgba(0,0,0,0.8); }
+      50% { text-shadow: 0 0 25px rgba(255,255,255,0.8); }
+    }
+    
+    .tab-nav{display:flex;justify-content:center;margin-bottom:15px;gap:5px;}
+    .tab-btn{
+      background:rgba(255,255,255,0.7);color:var(--deep);
+      border-radius:10px 10px 0 0;padding:6px 12px;
+      transition:all 0.3s ease;
+    }
+    .tab-btn.active{background:var(--pink);color:white;transform:translateY(-2px);}
+    .tab-content{display:none;animation:tabFadeIn 0.3s ease;}
+    .tab-content.active{display:block;}
+    @keyframes tabFadeIn {
+      0% { opacity: 0; transform: translateY(10px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    
+    /* Efectos especiales para items */
+    .skin-item, .background-item {
+      padding: 10px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.1);
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+    }
+    .skin-item:hover, .background-item:hover {
+      background: rgba(255,255,255,0.2);
+      border: 2px solid var(--pink);
+      transform: scale(1.05);
+    }
+    .premium-skin {
+      background: linear-gradient(45deg, rgba(255,215,0,0.2), rgba(255,105,180,0.2));
+      border: 2px solid gold;
+    }
+    .ultra-skin {
+      background: linear-gradient(45deg, rgba(138,43,226,0.2), rgba(255,20,147,0.2));
+      border: 2px solid purple;
+      animation: premiumGlow 2s ease-in-out infinite;
+    }
+    @keyframes premiumGlow {
+      0%, 100% { box-shadow: 0 0 10px rgba(138,43,226,0.5); }
+      50% { box-shadow: 0 0 20px rgba(255,20,147,0.8); }
+    }
+    
+    /* Nuevo: Animación para logros completados */
+    .achievement-complete {
+      animation: achievementComplete 1s ease-in-out;
+    }
+    @keyframes achievementComplete {
+      0% { transform: scale(1); background: rgba(255,255,255,0.1); }
+      50% { transform: scale(1.05); background: rgba(255,215,0,0.3); }
+      100% { transform: scale(1); background: rgba(255,255,255,0.1); }
+    }
+    
+    /* Nuevo: Efectos para mensajes */
+    .flash-message {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(255,255,255,0.9);
+      padding: 15px 25px;
+      border-radius: 15px;
+      font-size: 1.5em;
+      font-weight: bold;
+      color: var(--deep);
+      z-index: 100;
+      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+      animation: flashMessage 2s ease-in-out forwards;
+    }
+    @keyframes flashMessage {
+      0% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+      20% { opacity: 1; transform: translate(-50%, -50%) scale(1.1); }
+      30% { transform: translate(-50%, -50%) scale(1); }
+      80% { opacity: 1; }
+      100% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+    }
+    
+    /* Nuevo: Efecto para recompensa */
+    .reward-animation {
+      position: absolute;
+      font-size: 2em;
+      font-weight: bold;
+      color: gold;
+      text-shadow: 0 0 10px rgba(0,0,0,0.5);
+      z-index: 50;
+      animation: rewardFloat 2s ease-out forwards;
+    }
+    @keyframes rewardFloat {
+      0% { transform: translateY(0) scale(1); opacity: 1; }
+      100% { transform: translateY(-100px) scale(1.5); opacity: 0; }
+    }
+
+    /* Estilos para móviles - táctil */
+    @media (max-width: 768px) {
+      #levelInfo { font-size: 1.8em; }
+      .message { font-size: 1.5em; }
+      #diamondBar, #heartBar, #totalHeartsBar, #arcoirisBar { 
+        font-size: 0.9em; padding: 6px 8px; 
+      }
+      .panel { 
+        min-width: 90%; 
+        max-height: 90vh; 
+        padding: 15px;
+      }
+    }
+  </style>
+<script src="https://lib.youware.com/youware-lib.1747145198.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib.1747145198.js" id="yourware-lib"></script></head>
+<body class="bg-rosa bg-animate">
+  <!-- Pantalla de Carga -->
+  <div id="loadingScreen" style="display: none;">
+    <h1>❤️ RECOLECTA AMOR ❤️</h1>
+    <p>Cargando juego...</p>
+    <div id="loadingBar">
+      <div id="loadingProgress" style="width: 100%;"></div>
+    </div>
+    <p id="loadingText">¡Listo para jugar!</p>
+  </div>
+
+  <div class="particles" id="particles"><div class="particle" style="left: 98.7689%; animation-duration: 8.0474s;">✨</div><div class="particle" style="left: 91.7617%; animation-duration: 10.4436s;">🌟</div></div>
+  
+  <div class="panel" id="startMenu" style="display: none;">
+    <div class="rainbow-float" style="top: 10px; left: 20px;">🌈</div>
+    <div class="rainbow-float" style="top: 30px; right: 20px; animation-delay: -2s;">✨</div>
+    <div class="rainbow-float" style="bottom: 20px; left: 50px; animation-delay: -4s;">💖</div>
+    
+    <h1>❤️ Recolecta Amor ❤️</h1>
+    <button onclick="startGame()">🎮 Iniciar Juego</button>
+    <button onclick="openMenu('shopMenu')">🛍️ Tienda</button>
+    <button onclick="openMenu('powerMenu')">💎 Poderes</button>
+    <button onclick="openMenu('logrosMenu')">🏆 Logros</button>
+    <button onclick="openMenu('missionMenu')">🎯 Misiones</button>
+    <button onclick="openMenu('statsMenu')">📊 Estadísticas</button>
+  </div>
+  
+  <div class="panel" id="shopMenu" style="display: none;">
+    <h2>🛍️ Tienda Mágica</h2>
+    <div class="tab-nav">
+      <button class="tab-btn" onclick="changeTab('shop-skins', this)">🧙 Skins</button>
+      <button class="tab-btn" onclick="changeTab('shop-arcoiris', this)">🌈 Arcoíris</button>
+      <button class="tab-btn active" onclick="changeTab('shop-backgrounds', this)">🎨 Fondos</button>
+    </div>
+    
+    <div id="shop-skins" class="tab-content">
+      <div id="storeGrid"><div class="skin-item">
+          <div style="font-size:2.5rem">🧺</div>
+          <div style="font-size:0.8rem;font-weight:bold">Canasta Básica</div>
+        <button disabled="">✅ Equipado</button></div><div class="skin-item">
+          <div style="font-size:2.5rem">⭐</div>
+          <div style="font-size:0.8rem;font-weight:bold">Estrella Brillante</div>
+        <button disabled="">❤️ 50</button></div><div class="skin-item">
+          <div style="font-size:2.5rem">🌸</div>
+          <div style="font-size:0.8rem;font-weight:bold">Flor de Cerezo</div>
+        <button disabled="">❤️ 50</button></div><div class="skin-item">
+          <div style="font-size:2.5rem">🐵</div>
+          <div style="font-size:0.8rem;font-weight:bold">Mono Travieso</div>
+        <button disabled="">❤️ 80</button></div><div class="skin-item">
+          <div style="font-size:2.5rem">☀️</div>
+          <div style="font-size:0.8rem;font-weight:bold">Sol Radiante</div>
+        <button disabled="">❤️ 80</button></div><div class="skin-item">
+          <div style="font-size:2.5rem">🌙</div>
+          <div style="font-size:0.8rem;font-weight:bold">Luna Serena</div>
+        <button disabled="">❤️ 80</button></div><div class="skin-item">
+          <div style="font-size:2.5rem">🦝</div>
+          <div style="font-size:0.8rem;font-weight:bold">Mapache Lindo</div>
+        <button disabled="">❤️ 100</button></div><div class="skin-item">
+          <div style="font-size:2.5rem">🦄</div>
+          <div style="font-size:0.8rem;font-weight:bold">Unicornio Mágico</div>
+        <button disabled="">❤️ 150</button></div><div class="skin-item">
+          <div style="font-size:2.5rem">🐱</div>
+          <div style="font-size:0.8rem;font-weight:bold">Gatito Adorable</div>
+        <button disabled="">❤️ 150</button></div><div class="skin-item">
+          <div style="font-size:2.5rem">🐶</div>
+          <div style="font-size:0.8rem;font-weight:bold">Perrito Fiel</div>
+        <button disabled="">❤️ 150</button></div><div class="skin-item">
+          <div style="font-size:2.5rem">🐨</div>
+          <div style="font-size:0.8rem;font-weight:bold">Koala Dormilón</div>
+        <button disabled="">❤️ 200</button></div><div class="skin-item">
+          <div style="font-size:2.5rem">🐼</div>
+          <div style="font-size:0.8rem;font-weight:bold">Panda Juguetón</div>
+        <button disabled="">❤️ 200</button></div><div class="skin-item">
+          <div style="font-size:2.5rem">🦋</div>
+          <div style="font-size:0.8rem;font-weight:bold">Mariposa Elegante</div>
+        <button disabled="">❤️ 250</button></div><div class="skin-item">
+          <div style="font-size:2.5rem">🐝</div>
+          <div style="font-size:0.8rem;font-weight:bold">Abeja Trabajadora</div>
+        <button disabled="">❤️ 250</button></div><div class="skin-item">
+          <div style="font-size:2.5rem">🐙</div>
+          <div style="font-size:0.8rem;font-weight:bold">Pulpo Inteligente</div>
+        <button disabled="">❤️ 300</button></div><div class="skin-item premium-skin">
+          <div style="font-size:2.5rem">👑</div>
+          <div style="font-size:0.8rem;font-weight:bold">Corona Real</div>
+        <button disabled="">💎 10</button></div><div class="skin-item premium-skin">
+          <div style="font-size:2.5rem">👽</div>
+          <div style="font-size:0.8rem;font-weight:bold">Alienígena</div>
+        <button disabled="">💎 15</button></div><div class="skin-item premium-skin">
+          <div style="font-size:2.5rem">🤖</div>
+          <div style="font-size:0.8rem;font-weight:bold">Robot Futurista</div>
+        <button disabled="">💎 15</button></div><div class="skin-item premium-skin">
+          <div style="font-size:2.5rem">🧚</div>
+          <div style="font-size:0.8rem;font-weight:bold">Hada Mágica</div>
+        <button disabled="">💎 20</button></div><div class="skin-item premium-skin">
+          <div style="font-size:2.5rem">👼</div>
+          <div style="font-size:0.8rem;font-weight:bold">Ángel Guardián</div>
+        <button disabled="">💎 25</button></div><div class="skin-item premium-skin">
+          <div style="font-size:2.5rem">🧙</div>
+          <div style="font-size:0.8rem;font-weight:bold">Mago Sabio</div>
+        <button disabled="">💎 30</button></div><div class="skin-item premium-skin">
+          <div style="font-size:2.5rem">🥷</div>
+          <div style="font-size:0.8rem;font-weight:bold">Ninja Sigiloso</div>
+        <button disabled="">💎 35</button></div><div class="skin-item premium-skin">
+          <div style="font-size:2.5rem">🏴&zwj;☠️</div>
+          <div style="font-size:0.8rem;font-weight:bold">Pirata Aventurero</div>
+        <button disabled="">💎 40</button></div><div class="skin-item ultra-skin">
+          <div style="font-size:2.5rem">🌈</div>
+          <div style="font-size:0.8rem;font-weight:bold">Arcoíris Puro</div>
+        <button disabled="">🌈 5</button></div><div class="skin-item ultra-skin">
+          <div style="font-size:2.5rem">💎</div>
+          <div style="font-size:0.8rem;font-weight:bold">Cristal Mágico</div>
+        <button disabled="">🌈 10</button></div><div class="skin-item ultra-skin">
+          <div style="font-size:2.5rem">🌠</div>
+          <div style="font-size:0.8rem;font-weight:bold">Estrella Fugaz</div>
+        <button disabled="">🌈 15</button></div><div class="skin-item ultra-skin">
+          <div style="font-size:2.5rem">🌌</div>
+          <div style="font-size:0.8rem;font-weight:bold">Galaxia Infinita</div>
+        <button disabled="">🌈 20</button></div><div class="skin-item ultra-skin">
+          <div style="font-size:2.5rem">🔥</div>
+          <div style="font-size:0.8rem;font-weight:bold">Fénix Renacido</div>
+        <button disabled="">🌈 25</button></div><div class="skin-item">
+          <div style="font-size:2.5rem">🐉</div>
+          <div style="font-size:0.8rem;font-weight:bold">Dragón Místico</div>
+        <button disabled="">❤️ 400</button></div><div class="skin-item">
+          <div style="font-size:2.5rem">🧜&zwj;♀️</div>
+          <div style="font-size:0.8rem;font-weight:bold">Sirena Encantada</div>
+        <button disabled="">❤️ 450</button></div><div class="skin-item">
+          <div style="font-size:2.5rem">🐬</div>
+          <div style="font-size:0.8rem;font-weight:bold">Delfín Alegre</div>
+        <button disabled="">❤️ 350</button></div><div class="skin-item">
+          <div style="font-size:2.5rem">🐯</div>
+          <div style="font-size:0.8rem;font-weight:bold">Tigre Feroz</div>
+        <button disabled="">❤️ 380</button></div><div class="skin-item">
+          <div style="font-size:2.5rem">🦁</div>
+          <div style="font-size:0.8rem;font-weight:bold">León Majestuoso</div>
+        <button disabled="">❤️ 420</button></div><div class="skin-item">
+          <div style="font-size:2.5rem">🐘</div>
+          <div style="font-size:0.8rem;font-weight:bold">Elefante Sabio</div>
+        <button disabled="">❤️ 390</button></div><div class="skin-item premium-skin">
+          <div style="font-size:2.5rem">🦕</div>
+          <div style="font-size:0.8rem;font-weight:bold">Dinosaurio Amistoso</div>
+        <button disabled="">💎 45</button></div><div class="skin-item premium-skin">
+          <div style="font-size:2.5rem">👨&zwj;🚀</div>
+          <div style="font-size:0.8rem;font-weight:bold">Astronauta Espacial</div>
+        <button disabled="">💎 50</button></div><div class="skin-item premium-skin">
+          <div style="font-size:2.5rem">👩&zwj;🔬</div>
+          <div style="font-size:0.8rem;font-weight:bold">Científica Genial</div>
+        <button disabled="">💎 55</button></div><div class="skin-item premium-skin">
+          <div style="font-size:2.5rem">🧛</div>
+          <div style="font-size:0.8rem;font-weight:bold">Vampiro Nocturno</div>
+        <button disabled="">💎 60</button></div><div class="skin-item ultra-skin">
+          <div style="font-size:2.5rem">🦄✨</div>
+          <div style="font-size:0.8rem;font-weight:bold">Unicornio Brillante</div>
+        <button disabled="">🌈 30</button></div><div class="skin-item ultra-skin">
+          <div style="font-size:2.5rem">🧝</div>
+          <div style="font-size:0.8rem;font-weight:bold">Duende Mágico</div>
+        <button disabled="">🌈 35</button></div><div class="skin-item ultra-skin">
+          <div style="font-size:2.5rem">🧙&zwj;♂️</div>
+          <div style="font-size:0.8rem;font-weight:bold">Hechicero Supremo</div>
+        <button disabled="">🌈 40</button></div></div>
+    </div>
+    
+    <div id="shop-arcoiris" class="tab-content">
+      <div id="fundsGrid"><div class="skin-item">
+          <div style="font-size:1.1rem;font-weight:bold">Paquete Básico</div>
+          <div style="color:#777;margin:5px 0">+1 🌈</div>
+        <button disabled="">❤️ 50</button></div><div class="skin-item">
+          <div style="font-size:1.1rem;font-weight:bold">Paquete Premium</div>
+          <div style="color:#777;margin:5px 0">+3 🌈</div>
+        <button disabled="">💎 20</button></div><div class="skin-item">
+          <div style="font-size:1.1rem;font-weight:bold">Paquete Ultra</div>
+          <div style="color:#777;margin:5px 0">+2 🌈</div>
+        <button disabled="">❤️ 100</button></div><div class="skin-item">
+          <div style="font-size:1.1rem;font-weight:bold">Paquete Deluxe</div>
+          <div style="color:#777;margin:5px 0">+5 🌈</div>
+        <button disabled="">💎 30</button></div><div class="skin-item">
+          <div style="font-size:1.1rem;font-weight:bold">Paquete Épico</div>
+          <div style="color:#777;margin:5px 0">+3 🌈</div>
+        <button disabled="">❤️ 150</button></div><div class="skin-item">
+          <div style="font-size:1.1rem;font-weight:bold">Paquete Legendario</div>
+          <div style="color:#777;margin:5px 0">+8 🌈</div>
+        <button disabled="">💎 50</button></div><div class="skin-item">
+          <div style="font-size:1.1rem;font-weight:bold">Paquete Celestial</div>
+          <div style="color:#777;margin:5px 0">+4 🌈</div>
+        <button disabled="">❤️ 200</button></div><div class="skin-item">
+          <div style="font-size:1.1rem;font-weight:bold">Paquete Divino</div>
+          <div style="color:#777;margin:5px 0">+10 🌈</div>
+        <button disabled="">💎 70</button></div><div class="skin-item">
+          <div style="font-size:1.1rem;font-weight:bold">Paquete Místico</div>
+          <div style="color:#777;margin:5px 0">+5 🌈</div>
+        <button disabled="">❤️ 250</button></div><div class="skin-item">
+          <div style="font-size:1.1rem;font-weight:bold">Paquete Estelar</div>
+          <div style="color:#777;margin:5px 0">+12 🌈</div>
+        <button disabled="">💎 90</button></div></div>
+    </div>
+    
+    <div id="shop-backgrounds" class="tab-content active">
+      <div id="backgroundGrid"><div class="background-item">
+          <div style="font-size:1rem;font-weight:bold">Rosa Dulce</div>
+          <div style="height:40px;border-radius:8px;margin:5px 0" class="bg-rosa bg-animate"></div>
+        <button disabled="">🎨 Activo</button></div><div class="background-item">
+          <div style="font-size:1rem;font-weight:bold">Verde Naturaleza</div>
+          <div style="height:40px;border-radius:8px;margin:5px 0" class="bg-verde bg-pulse"></div>
+        <button disabled="">❤️ 100</button></div><div class="background-item">
+          <div style="font-size:1rem;font-weight:bold">Azul Océano</div>
+          <div style="height:40px;border-radius:8px;margin:5px 0" class="bg-azul bg-wave"></div>
+        <button disabled="">❤️ 150</button></div><div class="background-item">
+          <div style="font-size:1rem;font-weight:bold">Violeta Místico</div>
+          <div style="height:40px;border-radius:8px;margin:5px 0" class="bg-violeta bg-float"></div>
+        <button disabled="">❤️ 200</button></div><div class="background-item">
+          <div style="font-size:1rem;font-weight:bold">Naranja Alegre</div>
+          <div style="height:40px;border-radius:8px;margin:5px 0" class="bg-naranja bg-zoom"></div>
+        <button disabled="">❤️ 250</button></div><div class="background-item">
+          <div style="font-size:1rem;font-weight:bold">Amarillo Solar</div>
+          <div style="height:40px;border-radius:8px;margin:5px 0" class="bg-amarillo bg-pulse"></div>
+        <button disabled="">❤️ 300</button></div><div class="background-item">
+          <div style="font-size:1rem;font-weight:bold">Cyan Fresco</div>
+          <div style="height:40px;border-radius:8px;margin:5px 0" class="bg-cyan bg-wave"></div>
+        <button disabled="">💎 15</button></div><div class="background-item">
+          <div style="font-size:1rem;font-weight:bold">Coral Tropical</div>
+          <div style="height:40px;border-radius:8px;margin:5px 0" class="bg-coral bg-animate"></div>
+        <button disabled="">💎 20</button></div><div class="background-item">
+          <div style="font-size:1rem;font-weight:bold">Lavanda Relajante</div>
+          <div style="height:40px;border-radius:8px;margin:5px 0" class="bg-lavanda bg-float"></div>
+        <button disabled="">💎 25</button></div><div class="background-item">
+          <div style="font-size:1rem;font-weight:bold">Menta Refrescante</div>
+          <div style="height:40px;border-radius:8px;margin:5px 0" class="bg-menta bg-zoom"></div>
+        <button disabled="">💎 30</button></div><div class="background-item">
+          <div style="font-size:1rem;font-weight:bold">Durazno Suave</div>
+          <div style="height:40px;border-radius:8px;margin:5px 0" class="bg-durazno bg-pulse"></div>
+        <button disabled="">💎 35</button></div><div class="background-item">
+          <div style="font-size:1rem;font-weight:bold">Arcoíris Épico</div>
+          <div style="height:40px;border-radius:8px;margin:5px 0" class="bg-multicolor bg-spin"></div>
+        <button disabled="">💎 300</button></div><div class="background-item">
+          <div style="font-size:1rem;font-weight:bold">Anochecer Místico</div>
+          <div style="height:40px;border-radius:8px;margin:5px 0" class="bg-anochecer bg-float"></div>
+        <button disabled="">💎 40</button></div><div class="background-item">
+          <div style="font-size:1rem;font-weight:bold">Amanecer Dorado</div>
+          <div style="height:40px;border-radius:8px;margin:5px 0" class="bg-amanecer bg-pulse"></div>
+        <button disabled="">💎 45</button></div><div class="background-item">
+          <div style="font-size:1rem;font-weight:bold">Bosque Encantado</div>
+          <div style="height:40px;border-radius:8px;margin:5px 0" class="bg-bosque bg-sparkle"></div>
+        <button disabled="">💎 50</button></div><div class="background-item">
+          <div style="font-size:1rem;font-weight:bold">Galaxia Profunda</div>
+          <div style="height:40px;border-radius:8px;margin:5px 0" class="bg-galaxia bg-spin"></div>
+        <button disabled="">💎 60</button></div><div class="background-item">
+          <div style="font-size:1rem;font-weight:bold">Aurora Boreal</div>
+          <div style="height:40px;border-radius:8px;margin:5px 0" class="bg-aurora bg-wave"></div>
+        <button disabled="">💎 70</button></div><div class="background-item">
+          <div style="font-size:1rem;font-weight:bold">Atardecer Cálido</div>
+          <div style="height:40px;border-radius:8px;margin:5px 0" class="bg-atardecer bg-pulse"></div>
+        <button disabled="">💎 80</button></div><div class="background-item">
+          <div style="font-size:1rem;font-weight:bold">Resplandor Místico</div>
+          <div style="height:40px;border-radius:8px;margin:5px 0" class="bg-mistico bg-sparkle"></div>
+        <button disabled="">🌈 12</button></div><div class="background-item">
+          <div style="font-size:1rem;font-weight:bold">Profundidades Oceánicas</div>
+          <div style="height:40px;border-radius:8px;margin:5px 0" class="bg-oceano bg-zoom"></div>
+        <button disabled="">🌈 15</button></div></div>
+    </div>
+    
+    <button onclick="returnToMenu()">← Volver</button>
+  </div>
+  
+  <div class="panel" id="powerMenu" style="display: none;">
+    <h2>💎 Poderes Mágicos</h2>
+    <div id="powerGrid"><div class="skin-item premium-skin">
+          <div style="font-size:1.2rem;font-weight:bold">Imán Mágico</div>
+          <small style="color:#666">Atrae corazones y diamantes por 60s</small>
+        <button>💎 5</button></div><div class="skin-item premium-skin">
+          <div style="font-size:1.2rem;font-weight:bold">Doble Recompensa</div>
+          <small style="color:#666">Duplica todas las recompensas por 3min</small>
+        <button disabled="">💎 10</button></div><div class="skin-item premium-skin">
+          <div style="font-size:1.2rem;font-weight:bold">Escudo Protector</div>
+          <small style="color:#666">Te protege de todas las bombas por 1min</small>
+        <button disabled="">💎 8</button></div></div>
+    <button onclick="returnToMenu()">← Volver</button>
+  </div>
+  
+  <div class="panel" id="logrosMenu" style="display: none;">
+    <h2>🏆 Galería de Logros</h2>
+    <ul id="achievementsList"><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">⬜</span>
+          Compra tu primera skin 
+          <span style="color:gold;font-weight:bold">(+2 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">⬜</span>
+          Colecciona 3 skins diferentes 
+          <span style="color:gold;font-weight:bold">(+3 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">⬜</span>
+          Alcanza el nivel 5 
+          <span style="color:gold;font-weight:bold">(+5 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">⬜</span>
+          Conquista el nivel 10 
+          <span style="color:gold;font-weight:bold">(+8 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">⬜</span>
+          Recolecta 100 corazones 
+          <span style="color:gold;font-weight:bold">(+6 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">⬜</span>
+          Acumula 50 diamantes 
+          <span style="color:gold;font-weight:bold">(+7 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">⬜</span>
+          Usa el poder del Imán 
+          <span style="color:gold;font-weight:bold">(+3 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">⬜</span>
+          Activa Doble Recompensa 
+          <span style="color:gold;font-weight:bold">(+3 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">⬜</span>
+          Experimenta 5 derrotas 
+          <span style="color:gold;font-weight:bold">(+4 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">⬜</span>
+          Recolecta 50 corazones en total 
+          <span style="color:gold;font-weight:bold">(+5 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">⬜</span>
+          Colecciona 5 skins únicas 
+          <span style="color:gold;font-weight:bold">(+4 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">⬜</span>
+          Maestro coleccionista: 10 skins 
+          <span style="color:gold;font-weight:bold">(+8 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">⬜</span>
+          Héroe nivel 15 
+          <span style="color:gold;font-weight:bold">(+10 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">⬜</span>
+          Leyenda nivel 20 
+          <span style="color:gold;font-weight:bold">(+15 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">⬜</span>
+          Acumula 500 corazones 
+          <span style="color:gold;font-weight:bold">(+10 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">⬜</span>
+          Millonario: 1000 corazones 
+          <span style="color:gold;font-weight:bold">(+20 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">⬜</span>
+          Rico en diamantes: 100 
+          <span style="color:gold;font-weight:bold">(+12 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">🏆</span>
+          Usa el Escudo Protector 
+          <span style="color:gold;font-weight:bold">(+3 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">⬜</span>
+          Maestro del Imán: 10 usos 
+          <span style="color:gold;font-weight:bold">(+8 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">⬜</span>
+          Experto en Doble: 10 usos 
+          <span style="color:gold;font-weight:bold">(+8 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">⬜</span>
+          Cazador de diamantes: 10 
+          <span style="color:gold;font-weight:bold">(+5 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">⬜</span>
+          Coleccionista épico: 50 diamantes 
+          <span style="color:gold;font-weight:bold">(+10 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">⬜</span>
+          Veterano: 10 partidas 
+          <span style="color:gold;font-weight:bold">(+6 💎)</span>
+        </li><li class="achievement-complete" style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">🏆</span>
+          Superviviente: 5 minutos 
+          <span style="color:gold;font-weight:bold">(+8 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">⬜</span>
+          Fanático de fondos: 5 arcoíris 
+          <span style="color:gold;font-weight:bold">(+7 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">⬜</span>
+          Cambia de fondo 3 veces 
+          <span style="color:gold;font-weight:bold">(+5 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">⬜</span>
+          Encuentra un arcoíris especial 
+          <span style="color:gold;font-weight:bold">(+10 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">⬜</span>
+          Colecciona 15 skins 
+          <span style="color:gold;font-weight:bold">(+12 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">⬜</span>
+          Alcanza el nivel 30 
+          <span style="color:gold;font-weight:bold">(+25 💎)</span>
+        </li><li class="achievement-complete" style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">🏆</span>
+          Sobrevive 10 minutos 
+          <span style="color:gold;font-weight:bold">(+15 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">⬜</span>
+          Usa todos los poderes 
+          <span style="color:gold;font-weight:bold">(+15 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">⬜</span>
+          Maestro del nivel 50 
+          <span style="color:gold;font-weight:bold">(+30 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">⬜</span>
+          Colecciona 25 skins 
+          <span style="color:gold;font-weight:bold">(+20 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">⬜</span>
+          Acumula 100 arcoíris 
+          <span style="color:gold;font-weight:bold">(+25 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">⬜</span>
+          Recolecta 2000 corazones 
+          <span style="color:gold;font-weight:bold">(+30 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">⬜</span>
+          Acumula 300 diamantes 
+          <span style="color:gold;font-weight:bold">(+25 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">⬜</span>
+          Jugador épico: 50 partidas 
+          <span style="color:gold;font-weight:bold">(+15 💎)</span>
+        </li><li class="achievement-complete" style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">🏆</span>
+          Superviviente élite: 15 minutos 
+          <span style="color:gold;font-weight:bold">(+20 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">⬜</span>
+          Encontrar 5 arcoíris especiales 
+          <span style="color:gold;font-weight:bold">(+15 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">⬜</span>
+          Colecciona 10 fondos 
+          <span style="color:gold;font-weight:bold">(+18 💎)</span>
+        </li></ul>
+    <button onclick="returnToMenu()">← Volver</button>
+  </div>
+  
+  <div class="panel" id="missionMenu" style="display: none;">
+    <h2>🎯 Centro de Misiones</h2>
+    <div class="tab-nav">
+      <button class="tab-btn active" onclick="changeTab('mission-hearts', this)">❤️ Corazones</button>
+      <button class="tab-btn" onclick="changeTab('mission-levels', this)">🎚️ Niveles</button>
+      <button class="tab-btn" onclick="changeTab('mission-special', this)">⭐ Especiales</button>
+    </div>
+    
+    <div id="mission-hearts" class="tab-content active">
+      <ul id="missionsHeartsList"><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">🎯</span>
+          Recolecta 25 corazones en total 
+          <span style="color:gold;font-weight:bold">(+2 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">🎯</span>
+          Recolecta 50 corazones en total 
+          <span style="color:gold;font-weight:bold">(+2 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">🎯</span>
+          Recolecta 75 corazones en total 
+          <span style="color:gold;font-weight:bold">(+2 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">🎯</span>
+          Recolecta 100 corazones en total 
+          <span style="color:gold;font-weight:bold">(+3 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">🎯</span>
+          Recolecta 125 corazones en total 
+          <span style="color:gold;font-weight:bold">(+3 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">🎯</span>
+          Recolecta 150 corazones en total 
+          <span style="color:gold;font-weight:bold">(+3 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">🎯</span>
+          Recolecta 175 corazones en total 
+          <span style="color:gold;font-weight:bold">(+4 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">🎯</span>
+          Recolecta 200 corazones en total 
+          <span style="color:gold;font-weight:bold">(+4 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">🎯</span>
+          Recolecta 225 corazones en total 
+          <span style="color:gold;font-weight:bold">(+4 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">🎯</span>
+          Recolecta 250 corazones en total 
+          <span style="color:gold;font-weight:bold">(+5 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">🎯</span>
+          Recolecta 275 corazones en total 
+          <span style="color:gold;font-weight:bold">(+5 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">🎯</span>
+          Recolecta 300 corazones en total 
+          <span style="color:gold;font-weight:bold">(+5 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">🎯</span>
+          Recolecta 325 corazones en total 
+          <span style="color:gold;font-weight:bold">(+6 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">🎯</span>
+          Recolecta 350 corazones en total 
+          <span style="color:gold;font-weight:bold">(+6 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">🎯</span>
+          Recolecta 375 corazones en total 
+          <span style="color:gold;font-weight:bold">(+6 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">🎯</span>
+          Recolecta 400 corazones en total 
+          <span style="color:gold;font-weight:bold">(+7 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">🎯</span>
+          Recolecta 425 corazones en total 
+          <span style="color:gold;font-weight:bold">(+7 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">🎯</span>
+          Recolecta 450 corazones en total 
+          <span style="color:gold;font-weight:bold">(+7 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">🎯</span>
+          Recolecta 475 corazones en total 
+          <span style="color:gold;font-weight:bold">(+8 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">🎯</span>
+          Recolecta 500 corazones en total 
+          <span style="color:gold;font-weight:bold">(+8 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">🎯</span>
+          Recolecta 525 corazones en total 
+          <span style="color:gold;font-weight:bold">(+8 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">🎯</span>
+          Recolecta 550 corazones en total 
+          <span style="color:gold;font-weight:bold">(+9 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">🎯</span>
+          Recolecta 575 corazones en total 
+          <span style="color:gold;font-weight:bold">(+9 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">🎯</span>
+          Recolecta 600 corazones en total 
+          <span style="color:gold;font-weight:bold">(+9 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">🎯</span>
+          Recolecta 625 corazones en total 
+          <span style="color:gold;font-weight:bold">(+10 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">🎯</span>
+          Recolecta 650 corazones en total 
+          <span style="color:gold;font-weight:bold">(+10 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">🎯</span>
+          Recolecta 675 corazones en total 
+          <span style="color:gold;font-weight:bold">(+10 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">🎯</span>
+          Recolecta 700 corazones en total 
+          <span style="color:gold;font-weight:bold">(+11 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">🎯</span>
+          Recolecta 725 corazones en total 
+          <span style="color:gold;font-weight:bold">(+11 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">🎯</span>
+          Recolecta 750 corazones en total 
+          <span style="color:gold;font-weight:bold">(+11 💎)</span>
+        </li></ul>
+    </div>
+    
+    <div id="mission-levels" class="tab-content">
+      <ul id="missionsLevelsList"><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">✅</span>
+          Conquista el nivel 1 
+          <span style="color:gold;font-weight:bold">(+1 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">✅</span>
+          Conquista el nivel 2 
+          <span style="color:gold;font-weight:bold">(+1 💎)</span>
+        </li><li class="achievement-complete" style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">✅</span>
+          Conquista el nivel 3 
+          <span style="color:gold;font-weight:bold">(+1 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">🏔️</span>
+          Conquista el nivel 4 
+          <span style="color:gold;font-weight:bold">(+1 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">🏔️</span>
+          Conquista el nivel 5 
+          <span style="color:gold;font-weight:bold">(+1 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">🏔️</span>
+          Conquista el nivel 6 
+          <span style="color:gold;font-weight:bold">(+1 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">🏔️</span>
+          Conquista el nivel 7 
+          <span style="color:gold;font-weight:bold">(+1 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">🏔️</span>
+          Conquista el nivel 8 
+          <span style="color:gold;font-weight:bold">(+1 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">🏔️</span>
+          Conquista el nivel 9 
+          <span style="color:gold;font-weight:bold">(+1 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">🏔️</span>
+          Conquista el nivel 10 
+          <span style="color:gold;font-weight:bold">(+1 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">🏔️</span>
+          Conquista el nivel 11 
+          <span style="color:gold;font-weight:bold">(+2 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">🏔️</span>
+          Conquista el nivel 12 
+          <span style="color:gold;font-weight:bold">(+2 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">🏔️</span>
+          Conquista el nivel 13 
+          <span style="color:gold;font-weight:bold">(+2 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">🏔️</span>
+          Conquista el nivel 14 
+          <span style="color:gold;font-weight:bold">(+2 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">🏔️</span>
+          Conquista el nivel 15 
+          <span style="color:gold;font-weight:bold">(+2 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">🏔️</span>
+          Conquista el nivel 16 
+          <span style="color:gold;font-weight:bold">(+2 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">🏔️</span>
+          Conquista el nivel 17 
+          <span style="color:gold;font-weight:bold">(+2 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">🏔️</span>
+          Conquista el nivel 18 
+          <span style="color:gold;font-weight:bold">(+2 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">🏔️</span>
+          Conquista el nivel 19 
+          <span style="color:gold;font-weight:bold">(+2 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">🏔️</span>
+          Conquista el nivel 20 
+          <span style="color:gold;font-weight:bold">(+2 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">🏔️</span>
+          Conquista el nivel 21 
+          <span style="color:gold;font-weight:bold">(+3 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">🏔️</span>
+          Conquista el nivel 22 
+          <span style="color:gold;font-weight:bold">(+3 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">🏔️</span>
+          Conquista el nivel 23 
+          <span style="color:gold;font-weight:bold">(+3 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">🏔️</span>
+          Conquista el nivel 24 
+          <span style="color:gold;font-weight:bold">(+3 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">🏔️</span>
+          Conquista el nivel 25 
+          <span style="color:gold;font-weight:bold">(+3 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">🏔️</span>
+          Conquista el nivel 26 
+          <span style="color:gold;font-weight:bold">(+3 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">🏔️</span>
+          Conquista el nivel 27 
+          <span style="color:gold;font-weight:bold">(+3 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">🏔️</span>
+          Conquista el nivel 28 
+          <span style="color:gold;font-weight:bold">(+3 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">🏔️</span>
+          Conquista el nivel 29 
+          <span style="color:gold;font-weight:bold">(+3 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">🏔️</span>
+          Conquista el nivel 30 
+          <span style="color:gold;font-weight:bold">(+3 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">🏔️</span>
+          Conquista el nivel 31 
+          <span style="color:gold;font-weight:bold">(+4 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">🏔️</span>
+          Conquista el nivel 32 
+          <span style="color:gold;font-weight:bold">(+4 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">🏔️</span>
+          Conquista el nivel 33 
+          <span style="color:gold;font-weight:bold">(+4 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">🏔️</span>
+          Conquista el nivel 34 
+          <span style="color:gold;font-weight:bold">(+4 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">🏔️</span>
+          Conquista el nivel 35 
+          <span style="color:gold;font-weight:bold">(+4 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">🏔️</span>
+          Conquista el nivel 36 
+          <span style="color:gold;font-weight:bold">(+4 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">🏔️</span>
+          Conquista el nivel 37 
+          <span style="color:gold;font-weight:bold">(+4 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">🏔️</span>
+          Conquista el nivel 38 
+          <span style="color:gold;font-weight:bold">(+4 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">🏔️</span>
+          Conquista el nivel 39 
+          <span style="color:gold;font-weight:bold">(+4 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">🏔️</span>
+          Conquista el nivel 40 
+          <span style="color:gold;font-weight:bold">(+4 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">🏔️</span>
+          Conquista el nivel 41 
+          <span style="color:gold;font-weight:bold">(+5 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">🏔️</span>
+          Conquista el nivel 42 
+          <span style="color:gold;font-weight:bold">(+5 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">🏔️</span>
+          Conquista el nivel 43 
+          <span style="color:gold;font-weight:bold">(+5 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">🏔️</span>
+          Conquista el nivel 44 
+          <span style="color:gold;font-weight:bold">(+5 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">🏔️</span>
+          Conquista el nivel 45 
+          <span style="color:gold;font-weight:bold">(+5 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">🏔️</span>
+          Conquista el nivel 46 
+          <span style="color:gold;font-weight:bold">(+5 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">🏔️</span>
+          Conquista el nivel 47 
+          <span style="color:gold;font-weight:bold">(+5 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">🏔️</span>
+          Conquista el nivel 48 
+          <span style="color:gold;font-weight:bold">(+5 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">🏔️</span>
+          Conquista el nivel 49 
+          <span style="color:gold;font-weight:bold">(+5 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">🏔️</span>
+          Conquista el nivel 50 
+          <span style="color:gold;font-weight:bold">(+5 💎)</span>
+        </li></ul>
+    </div>
+    
+    <div id="mission-special" class="tab-content">
+      <ul id="missionsSpecialList"><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">⭐</span>
+          Usa 3 poderes diferentes 
+          <span style="color:gold;font-weight:bold">(+10 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">⭐</span>
+          Cambia de fondo 5 veces 
+          <span style="color:gold;font-weight:bold">(+8 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">⭐</span>
+          Encuentra 3 arcoíris especiales 
+          <span style="color:gold;font-weight:bold">(+15 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">⭐</span>
+          Compra 1 skin de cada nivel 
+          <span style="color:gold;font-weight:bold">(+20 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">⭐</span>
+          Juega 25 partidas 
+          <span style="color:gold;font-weight:bold">(+12 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">⭐</span>
+          Acumula 50 arcoíris 
+          <span style="color:gold;font-weight:bold">(+25 💎)</span>
+        </li><li class="achievement-complete" style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">🌟</span>
+          Sobrevive 15 minutos 
+          <span style="color:gold;font-weight:bold">(+20 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">⭐</span>
+          Colecciona 20 skins 
+          <span style="color:gold;font-weight:bold">(+30 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">⭐</span>
+          Usa 6 poderes diferentes 
+          <span style="color:gold;font-weight:bold">(+25 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">⭐</span>
+          Acumula 100 arcoíris 
+          <span style="color:gold;font-weight:bold">(+35 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">⭐</span>
+          Colecciona 30 skins 
+          <span style="color:gold;font-weight:bold">(+40 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">⭐</span>
+          Colecciona 15 fondos 
+          <span style="color:gold;font-weight:bold">(+30 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">⭐</span>
+          Consigue 50 logros 
+          <span style="color:gold;font-weight:bold">(+50 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">⭐</span>
+          Juega 100 partidas 
+          <span style="color:gold;font-weight:bold">(+40 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">⭐</span>
+          Acumula 5000 corazones 
+          <span style="color:gold;font-weight:bold">(+60 💎)</span>
+        </li><li style="padding: 8px; margin: 4px 0px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+          <span style="font-size:1.2rem">⭐</span>
+          Sobrevive 30 minutos 
+          <span style="color:gold;font-weight:bold">(+50 💎)</span>
+        </li></ul>
+    </div>
+    
+    <button onclick="returnToMenu()">← Volver</button>
+  </div>
+  
+  <div class="panel" id="statsMenu" style="display: none;">
+    <h2>📊 Estadísticas Épicas</h2>
+    <ul id="statsList"><li style="padding: 6px; margin: 3px 0px; border-radius: 6px; background: rgba(255, 255, 255, 0.1); font-weight: bold;">❤️ Corazones totales: 23</li><li style="padding: 6px; margin: 3px 0px; border-radius: 6px; background: rgba(255, 255, 255, 0.1); font-weight: bold;">💎 Diamantes actuales: 69</li><li style="padding: 6px; margin: 3px 0px; border-radius: 6px; background: rgba(255, 255, 255, 0.1); font-weight: bold;">🌈 Arcoíris mágicos: 0</li><li style="padding: 6px; margin: 3px 0px; border-radius: 6px; background: rgba(255, 255, 255, 0.1); font-weight: bold;">🏆 Nivel actual: 3</li><li style="padding: 6px; margin: 3px 0px; border-radius: 6px; background: rgba(255, 255, 255, 0.1); font-weight: bold;">🎮 Partidas jugadas: 1</li><li style="padding: 6px; margin: 3px 0px; border-radius: 6px; background: rgba(255, 255, 255, 0.1); font-weight: bold;">💎 Diamantes recolectados: 0</li><li style="padding: 6px; margin: 3px 0px; border-radius: 6px; background: rgba(255, 255, 255, 0.1); font-weight: bold;">⏱️ Tiempo récord (s): 1441</li><li style="padding: 6px; margin: 3px 0px; border-radius: 6px; background: rgba(255, 255, 255, 0.1); font-weight: bold;">🔄 Fondos cambiados: 0</li><li style="padding: 6px; margin: 3px 0px; border-radius: 6px; background: rgba(255, 255, 255, 0.1); font-weight: bold;">🌈 Arcoíris encontrados: 0</li><li style="padding: 6px; margin: 3px 0px; border-radius: 6px; background: rgba(255, 255, 255, 0.1); font-weight: bold;">💔 Derrotas: 2</li><li style="padding: 6px; margin: 3px 0px; border-radius: 6px; background: rgba(255, 255, 255, 0.1); font-weight: bold;">🔮 Poderes usados: 3</li><li style="padding: 6px; margin: 3px 0px; border-radius: 6px; background: rgba(255, 255, 255, 0.1); font-weight: bold;">🎁 Paquetes comprados: 0</li><li style="padding: 6px; margin: 3px 0px; border-radius: 6px; background: rgba(255, 255, 255, 0.1); font-weight: bold;">👕 Skins coleccionadas: 0</li><li style="padding: 6px; margin: 3px 0px; border-radius: 6px; background: rgba(255, 255, 255, 0.1); font-weight: bold;">🎨 Fondos desbloqueados: 1</li></ul>
+    <button onclick="returnToMenu()">← Volver</button>
+  </div>
+  
+  <div class="panel" id="pauseMenu" style="display: none;">
+    <h2>⏸️ Pausa</h2>
+    <button onclick="resumeGame()">▶️ Continuar</button>
+    <button onclick="returnToMenu()">🏠 Menú Principal</button>
+  </div>
+  
+  <div class="panel" id="gameOverMenu" style="display:none;">
+    <h2>💔 ¡Juego Terminado!</h2>
+    <p>¡No te rindas, inténtalo de nuevo!</p>
+    <button onclick="retryGame()">🔄 Reintentar</button>
+    <button onclick="returnToMenu()">🏠 Menú Principal</button>
+  </div>
+  
+  <div class="panel" id="levelUpMenu" style="display: block;">
+    <h2>🎉 ¡Nivel Completado!</h2>
+    <p>¡Felicidades! Has avanzado al nivel <span id="newLevel">3</span></p>
+    <button onclick="continuePlaying()">✨ Continuar</button>
+  </div>
+  
+  <canvas id="gameCanvas" width="1110" height="150"></canvas>
+  
+  <div id="diamondBar">💎: 69</div>
+  <div id="heartBar">❤️: 0</div>
+  <div id="totalHeartsBar">💗 Total: 23</div>
+  <div id="arcoirisBar">🌈: 0</div>
+  
+  <div id="lifeBar"><img src="https://cdn-icons-png.flaticon.com/512/833/833472.png"></div>
+  
+  <img id="shieldIcon" src="https://cdn-icons-png.flaticon.com/512/2972/2972929.png" alt="Escudo" style="display: none;">
+  <div id="shieldTimer" style="display: none;">1s</div>
+  
+  <img id="imanIcon" src="https://cdn-icons-png.flaticon.com/512/1040/1040245.png" alt="Imán" style="display: none;">
+  <div id="imanTimer" style="display: none;">60s</div>
+  
+  <img id="dblIcon" src="https://cdn-icons-png.flaticon.com/512/2777/2777223.png" alt="Doble Puntos" style="display: none;">
+  <div id="dblTimer" style="display: none;">180s</div>
+  
+  <!-- Iconos de poderes -->
+  <img id="freezeIcon" src="https://cdn-icons-png.flaticon.com/512/2336/2336289.png" alt="Congelación" style="display: none;">
+  <div id="freezeTimer" style="display: none;">1s</div>
+  
+  <button id="pauseBtn" onclick="pauseGame()" style="display: none;">⏸️</button>
+  
+  <div class="message" id="msg">¡Recoge los corazones mágicos! 💖✨</div>
+  <div id="levelInfo">Nivel 3 - 16 ❤️ faltantes</div>
+  
+  <script>
+    // Sistema de fondos de pantalla
+    const backgrounds = [
+      { id: 'rosa', name: 'Rosa Dulce', classes: 'bg-rosa bg-animate', cost: 0, costType: 'heart' },
+      { id: 'verde', name: 'Verde Naturaleza', classes: 'bg-verde bg-pulse', cost: 100, costType: 'heart' },
+      { id: 'azul', name: 'Azul Océano', classes: 'bg-azul bg-wave', cost: 150, costType: 'heart' },
+      { id: 'violeta', name: 'Violeta Místico', classes: 'bg-violeta bg-float', cost: 200, costType: 'heart' },
+      { id: 'naranja', name: 'Naranja Alegre', classes: 'bg-naranja bg-zoom', cost: 250, costType: 'heart' },
+      { id: 'amarillo', name: 'Amarillo Solar', classes: 'bg-amarillo bg-pulse', cost: 300, costType: 'heart' },
+      { id: 'cyan', name: 'Cyan Fresco', classes: 'bg-cyan bg-wave', cost: 15, costType: 'diamond' },
+      { id: 'coral', name: 'Coral Tropical', classes: 'bg-coral bg-animate', cost: 20, costType: 'diamond' },
+      { id: 'lavanda', name: 'Lavanda Relajante', classes: 'bg-lavanda bg-float', cost: 25, costType: 'diamond' },
+      { id: 'menta', name: 'Menta Refrescante', classes: 'bg-menta bg-zoom', cost: 30, costType: 'diamond' },
+      { id: 'durazno', name: 'Durazno Suave', classes: 'bg-durazno bg-pulse', cost: 35, costType: 'diamond' },
+      { id: 'multicolor', name: 'Arcoíris Épico', classes: 'bg-multicolor bg-spin', cost: 300, costType: 'diamond' },
+      // Nuevos fondos
+      { id: 'anochecer', name: 'Anochecer Místico', classes: 'bg-anochecer bg-float', cost: 40, costType: 'diamond' },
+      { id: 'amanecer', name: 'Amanecer Dorado', classes: 'bg-amanecer bg-pulse', cost: 45, costType: 'diamond' },
+      { id: 'bosque', name: 'Bosque Encantado', classes: 'bg-bosque bg-sparkle', cost: 50, costType: 'diamond' },
+      { id: 'galaxia', name: 'Galaxia Profunda', classes: 'bg-galaxia bg-spin', cost: 60, costType: 'diamond' },
+      { id: 'aurora', name: 'Aurora Boreal', classes: 'bg-aurora bg-wave', cost: 70, costType: 'diamond' },
+      { id: 'atardecer', name: 'Atardecer Cálido', classes: 'bg-atardecer bg-pulse', cost: 80, costType: 'diamond' },
+      { id: 'mistico', name: 'Resplandor Místico', classes: 'bg-mistico bg-sparkle', cost: 12, costType: 'arcoiris' },
+      { id: 'oceano', name: 'Profundidades Oceánicas', classes: 'bg-oceano bg-zoom', cost: 15, costType: 'arcoiris' },
+    ];
+
+    // Datos y estado
+    const skins = [
+      // Skins básicas
+      { id: 'canasta', emoji: '🧺', name: 'Canasta Básica', cost: 0, costType: 'heart', tier: 'basic' },
+      { id: 'estrella', emoji: '⭐', name: 'Estrella Brillante', cost: 50, costType: 'heart', tier: 'basic' },
+      { id: 'flor', emoji: '🌸', name: 'Flor de Cerezo', cost: 50, costType: 'heart', tier: 'basic' },
+      { id: 'monito', emoji: '🐵', name: 'Mono Travieso', cost: 80, costType: 'heart', tier: 'basic' },
+      { id: 'sol', emoji: '☀️', name: 'Sol Radiante', cost: 80, costType: 'heart', tier: 'basic' },
+      { id: 'luna', emoji: '🌙', name: 'Luna Serena', cost: 80, costType: 'heart', tier: 'basic' },
+      { id: 'mapache', emoji: '🦝', name: 'Mapache Lindo', cost: 100, costType: 'heart', tier: 'basic' },
+      // Skins intermedias
+      { id: 'unicornio', emoji: '🦄', name: 'Unicornio Mágico', cost: 150, costType: 'heart', tier: 'basic' },
+      { id: 'gato', emoji: '🐱', name: 'Gatito Adorable', cost: 150, costType: 'heart', tier: 'basic' },
+      { id: 'perro', emoji: '🐶', name: 'Perrito Fiel', cost: 150, costType: 'heart', tier: 'basic' },
+      { id: 'koala', emoji: '🐨', name: 'Koala Dormilón', cost: 200, costType: 'heart', tier: 'basic' },
+      { id: 'panda', emoji: '🐼', name: 'Panda Juguetón', cost: 200, costType: 'heart', tier: 'basic' },
+      { id: 'mariposa', emoji: '🦋', name: 'Mariposa Elegante', cost: 250, costType: 'heart', tier: 'basic' },
+      { id: 'abeja', emoji: '🐝', name: 'Abeja Trabajadora', cost: 250, costType: 'heart', tier: 'basic' },
+      { id: 'pulpo', emoji: '🐙', name: 'Pulpo Inteligente', cost: 300, costType: 'heart', tier: 'basic' },
+      // Skins premium
+      { id: 'corona', emoji: '👑', name: 'Corona Real', cost: 10, costType: 'diamond', tier: 'premium' },
+      { id: 'alien', emoji: '👽', name: 'Alienígena', cost: 15, costType: 'diamond', tier: 'premium' },
+      { id: 'robot', emoji: '🤖', name: 'Robot Futurista', cost: 15, costType: 'diamond', tier: 'premium' },
+      { id: 'hada', emoji: '🧚', name: 'Hada Mágica', cost: 20, costType: 'diamond', tier: 'premium' },
+      { id: 'angel', emoji: '👼', name: 'Ángel Guardián', cost: 25, costType: 'diamond', tier: 'premium' },
+      { id: 'mago', emoji: '🧙', name: 'Mago Sabio', cost: 30, costType: 'diamond', tier: 'premium' },
+      { id: 'ninja', emoji: '🥷', name: 'Ninja Sigiloso', cost: 35, costType: 'diamond', tier: 'premium' },
+      { id: 'pirata', emoji: '🏴&zwj;☠️', name: 'Pirata Aventurero', cost: 40, costType: 'diamond', tier: 'premium' },
+      // Skins ultra premium (con arcoíris)
+      { id: 'arcoiris', emoji: '🌈', name: 'Arcoíris Puro', cost: 5, costType: 'arcoiris', tier: 'ultra' },
+      { id: 'cristal', emoji: '💎', name: 'Cristal Mágico', cost: 10, costType: 'arcoiris', tier: 'ultra' },
+      { id: 'estrellafugaz', emoji: '🌠', name: 'Estrella Fugaz', cost: 15, costType: 'arcoiris', tier: 'ultra' },
+      { id: 'galaxia', emoji: '🌌', name: 'Galaxia Infinita', cost: 20, costType: 'arcoiris', tier: 'ultra' },
+      { id: 'phoenix', emoji: '🔥', name: 'Fénix Renacido', cost: 25, costType: 'arcoiris', tier: 'ultra' },
+      // Nuevas skins
+      { id: 'dragon', emoji: '🐉', name: 'Dragón Místico', cost: 400, costType: 'heart', tier: 'basic' },
+      { id: 'sirena', emoji: '🧜&zwj;♀️', name: 'Sirena Encantada', cost: 450, costType: 'heart', tier: 'basic' },
+      { id: 'delfin', emoji: '🐬', name: 'Delfín Alegre', cost: 350, costType: 'heart', tier: 'basic' },
+      { id: 'tigre', emoji: '🐯', name: 'Tigre Feroz', cost: 380, costType: 'heart', tier: 'basic' },
+      { id: 'leon', emoji: '🦁', name: 'León Majestuoso', cost: 420, costType: 'heart', tier: 'basic' },
+      { id: 'elefante', emoji: '🐘', name: 'Elefante Sabio', cost: 390, costType: 'heart', tier: 'basic' },
+      { id: 'dino', emoji: '🦕', name: 'Dinosaurio Amistoso', cost: 45, costType: 'diamond', tier: 'premium' },
+      { id: 'astronauta', emoji: '👨&zwj;🚀', name: 'Astronauta Espacial', cost: 50, costType: 'diamond', tier: 'premium' },
+      { id: 'cientifico', emoji: '👩&zwj;🔬', name: 'Científica Genial', cost: 55, costType: 'diamond', tier: 'premium' },
+      { id: 'vampiro', emoji: '🧛', name: 'Vampiro Nocturno', cost: 60, costType: 'diamond', tier: 'premium' },
+      { id: 'unicornioBrillante', emoji: '🦄✨', name: 'Unicornio Brillante', cost: 30, costType: 'arcoiris', tier: 'ultra' },
+      { id: 'duendeMagico', emoji: '🧝', name: 'Duende Mágico', cost: 35, costType: 'arcoiris', tier: 'ultra' },
+      { id: 'hechicero', emoji: '🧙&zwj;♂️', name: 'Hechicero Supremo', cost: 40, costType: 'arcoiris', tier: 'ultra' },
+    ];
+
+    const arcoirisFunds = [
+      { id: 'fund1', name: 'Paquete Básico', cost: 50, costType: 'heart', reward: 1 },
+      { id: 'fund2', name: 'Paquete Premium', cost: 20, costType: 'diamond', reward: 3 },
+      { id: 'fund3', name: 'Paquete Ultra', cost: 100, costType: 'heart', reward: 2 },
+      { id: 'fund4', name: 'Paquete Deluxe', cost: 30, costType: 'diamond', reward: 5 },
+      { id: 'fund5', name: 'Paquete Épico', cost: 150, costType: 'heart', reward: 3 },
+      { id: 'fund6', name: 'Paquete Legendario', cost: 50, costType: 'diamond', reward: 8 },
+      // Nuevos paquetes
+      { id: 'fund7', name: 'Paquete Celestial', cost: 200, costType: 'heart', reward: 4 },
+      { id: 'fund8', name: 'Paquete Divino', cost: 70, costType: 'diamond', reward: 10 },
+      { id: 'fund9', name: 'Paquete Místico', cost: 250, costType: 'heart', reward: 5 },
+      { id: 'fund10', name: 'Paquete Estelar', cost: 90, costType: 'diamond', reward: 12 },
+    ];
+
+    const powers = [
+      { id: 'iman', name: 'Imán Mágico', cost: 5, duration: 60000, desc: 'Atrae corazones y diamantes por 60s' },
+      { id: 'doblePts', name: 'Doble Recompensa', cost: 10, duration: 180000, desc: 'Duplica todas las recompensas por 3min' },
+      { id: 'shield', name: 'Escudo Protector', cost: 8, duration: 60000, desc: 'Te protege de todas las bombas por 1min' }
+    ];
+
+    const achievements = [
+      // Logros originales
+      { id: 'a1', desc: 'Compra tu primera skin', cond: () => Object.keys(inv).length >= 1, reward: 2 },
+      { id: 'a2', desc: 'Colecciona 3 skins diferentes', cond: () => Object.keys(inv).length >= 3, reward: 3 },
+      { id: 'a3', desc: 'Alcanza el nivel 5', cond: () => level >= 5, reward: 5 },
+      { id: 'a4', desc: 'Conquista el nivel 10', cond: () => level >= 10, reward: 8 },
+      { id: 'a5', desc: 'Recolecta 100 corazones', cond: () => stats.hearts >= 100, reward: 6 },
+      { id: 'a6', desc: 'Acumula 50 diamantes', cond: () => stats.diamonds >= 50, reward: 7 },
+      { id: 'a7', desc: 'Usa el poder del Imán', cond: () => usedPowers.iman > 0, reward: 3 },
+      { id: 'a8', desc: 'Activa Doble Recompensa', cond: () => usedPowers.doblePts > 0, reward: 3 },
+      { id: 'a9', desc: 'Experimenta 5 derrotas', cond: () => stats.losses >= 5, reward: 4 },
+      { id: 'a10', desc: 'Recolecta 50 corazones en total', cond: () => stats.hearts >= 50, reward: 5 },
+      // Nuevos logros épicos
+      { id: 'a11', desc: 'Colecciona 5 skins únicas', cond: () => Object.keys(inv).length >= 5, reward: 4 },
+      { id: 'a12', desc: 'Maestro coleccionista: 10 skins', cond: () => Object.keys(inv).length >= 10, reward: 8 },
+      { id: 'a13', desc: 'Héroe nivel 15', cond: () => level >= 15, reward: 10 },
+      { id: 'a14', desc: 'Leyenda nivel 20', cond: () => level >= 20, reward: 15 },
+      { id: 'a15', desc: 'Acumula 500 corazones', cond: () => stats.hearts >= 500, reward: 10 },
+      { id: 'a16', desc: 'Millonario: 1000 corazones', cond: () => stats.hearts >= 1000, reward: 20 },
+      { id: 'a17', desc: 'Rico en diamantes: 100', cond: () => stats.diamonds >= 100, reward: 12 },
+      { id: 'a18', desc: 'Usa el Escudo Protector', cond: () => usedPowers.shield > 0, reward: 3 },
+      { id: 'a19', desc: 'Maestro del Imán: 10 usos', cond: () => usedPowers.iman >= 10, reward: 8 },
+      { id: 'a20', desc: 'Experto en Doble: 10 usos', cond: () => usedPowers.doblePts >= 10, reward: 8 },
+      { id: 'a21', desc: 'Cazador de diamantes: 10', cond: () => stats.diamondsCollected >= 10, reward: 5 },
+      { id: 'a22', desc: 'Coleccionista épico: 50 diamantes', cond: () => stats.diamondsCollected >= 50, reward: 10 },
+      { id: 'a23', desc: 'Veterano: 10 partidas', cond: () => stats.games >= 10, reward: 6 },
+      { id: 'a24', desc: 'Superviviente: 5 minutos', cond: () => stats.maxTime >= 300, reward: 8 },
+      { id: 'a25', desc: 'Fanático de fondos: 5 arcoíris', cond: () => stats.arcoiris >= 5, reward: 7 },
+      { id: 'a26', desc: 'Cambia de fondo 3 veces', cond: () => stats.backgroundsChanged >= 3, reward: 5 },
+      { id: 'a27', desc: 'Encuentra un arcoíris especial', cond: () => stats.rainbowsFound >= 1, reward: 10 },
+      { id: 'a28', desc: 'Colecciona 15 skins', cond: () => Object.keys(inv).length >= 15, reward: 12 },
+      { id: 'a29', desc: 'Alcanza el nivel 30', cond: () => level >= 30, reward: 25 },
+      { id: 'a30', desc: 'Sobrevive 10 minutos', cond: () => stats.maxTime >= 600, reward: 15 },
+      // Nuevos logros
+      { id: 'a31', desc: 'Usa todos los poderes', cond: () => Object.keys(usedPowers).filter(p => usedPowers[p] > 0).length >= 6, reward: 15 },
+      { id: 'a32', desc: 'Maestro del nivel 50', cond: () => level >= 50, reward: 30 },
+      { id: 'a33', desc: 'Colecciona 25 skins', cond: () => Object.keys(inv).length >= 25, reward: 20 },
+      { id: 'a34', desc: 'Acumula 100 arcoíris', cond: () => stats.arcoiris >= 100, reward: 25 },
+      { id: 'a35', desc: 'Recolecta 2000 corazones', cond: () => stats.hearts >= 2000, reward: 30 },
+      { id: 'a36', desc: 'Acumula 300 diamantes', cond: () => stats.diamonds >= 300, reward: 25 },
+      { id: 'a37', desc: 'Jugador épico: 50 partidas', cond: () => stats.games >= 50, reward: 15 },
+      { id: 'a38', desc: 'Superviviente élite: 15 minutos', cond: () => stats.maxTime >= 900, reward: 20 },
+      { id: 'a39', desc: 'Encontrar 5 arcoíris especiales', cond: () => stats.rainbowsFound >= 5, reward: 15 },
+      { id: 'a40', desc: 'Colecciona 10 fondos', cond: () => Object.keys(backgroundsOwned).length >= 10, reward: 18 },
+    ];
+
+    // Misiones de corazones expandidas
+    const heartMissions = Array.from({ length: 30 }, (_, i) => ({
+      id: 'mh' + (i + 1),
+      desc: 'Recolecta ' + ((i + 1) * 25) + ' corazones en total',
+      cond: () => stats.hearts >= (i + 1) * 25,
+      reward: Math.ceil((i + 1) / 3) + 1
+    }));
+
+    // Misiones de niveles expandidas
+    const levelMissions = Array.from({ length: 50 }, (_, i) => ({
+      id: 'ml' + (i + 1),
+      desc: 'Conquista el nivel ' + (i + 1),
+      cond: () => level >= (i + 1),
+      reward: Math.floor((i) / 10) + 1
+    }));
+
+    // Misiones especiales
+    const specialMissions = [
+      { id: 'ms1', desc: 'Usa 3 poderes diferentes', cond: () => Object.keys(usedPowers).filter(p => usedPowers[p] > 0).length >= 3, reward: 10 },
+      { id: 'ms2', desc: 'Cambia de fondo 5 veces', cond: () => stats.backgroundsChanged >= 5, reward: 8 },
+      { id: 'ms3', desc: 'Encuentra 3 arcoíris especiales', cond: () => stats.rainbowsFound >= 3, reward: 15 },
+      { id: 'ms4', desc: 'Compra 1 skin de cada nivel', cond: () => hasSkinOfEachTier(), reward: 20 },
+      { id: 'ms5', desc: 'Juega 25 partidas', cond: () => stats.games >= 25, reward: 12 },
+      { id: 'ms6', desc: 'Acumula 50 arcoíris', cond: () => stats.arcoiris >= 50, reward: 25 },
+      { id: 'ms7', desc: 'Sobrevive 15 minutos', cond: () => stats.maxTime >= 900, reward: 20 },
+      { id: 'ms8', desc: 'Colecciona 20 skins', cond: () => Object.keys(inv).length >= 20, reward: 30 },
+      // Nuevas misiones especiales
+      { id: 'ms9', desc: 'Usa 6 poderes diferentes', cond: () => Object.keys(usedPowers).filter(p => usedPowers[p] > 0).length >= 6, reward: 25 },
+      { id: 'ms10', desc: 'Acumula 100 arcoíris', cond: () => stats.arcoiris >= 100, reward: 35 },
+      { id: 'ms11', desc: 'Colecciona 30 skins', cond: () => Object.keys(inv).length >= 30, reward: 40 },
+      { id: 'ms12', desc: 'Colecciona 15 fondos', cond: () => Object.keys(backgroundsOwned).length >= 15, reward: 30 },
+      { id: 'ms13', desc: 'Consigue 50 logros', cond: () => Object.keys(achievementsDone).length >= 50, reward: 50 },
+      { id: 'ms14', desc: 'Juega 100 partidas', cond: () => stats.games >= 100, reward: 40 },
+      { id: 'ms15', desc: 'Acumula 5000 corazones', cond: () => stats.hearts >= 5000, reward: 60 },
+      { id: 'ms16', desc: 'Sobrevive 30 minutos', cond: () => stats.maxTime >= 1800, reward: 50 },
+    ];
+
+    let inv = {}, equipped = 'canasta', backgroundsOwned = {}, currentBackground = 'rosa', fundsOwned = {},
+        stats = { 
+          hearts: 0, diamonds: 0, arcoiris: 0, losses: 0, games: 0,
+          diamondsCollected: 0, maxTime: 0, backgroundsChanged: 0, rainbowsFound: 0 
+        },
+        level = 1;
+    let activePowers = {}, usedPowers = { iman: 0, doblePts: 0, shield: 0, freeze: 0 },
+        missionsDoneHearts = {}, missionsDoneLevels = {}, missionsDoneSpecial = {}, achievementsDone = {};
+    let items = [], lives = 3, shield = false, dropTimer = 0, heartsThisLevel = 0,
+        score = 0, running = false, paused = false, gameStartTime = 0, gameTime = 0;
+    
+    // Variables para controles táctiles
+    let playerX = 0;
+    let touchStartX = 0;
+    let isDragging = false;
+    let isGameLoaded = false;
+        
+    // Nuevo: mostrar mensaje de flash
+    function showFlashMessage(message, delay = 2000) {
+      const messageDiv = document.createElement('div');
+      messageDiv.className = 'flash-message';
+      messageDiv.textContent = message;
+      document.body.appendChild(messageDiv);
+      
+      setTimeout(() => {
+        messageDiv.remove();
+      }, delay);
+    }
+    
+    // Nuevo: mostrar animación de recompensa
+    function showRewardAnimation(x, y, text) {
+      const rewardDiv = document.createElement('div');
+      rewardDiv.className = 'reward-animation';
+      rewardDiv.textContent = text;
+      rewardDiv.style.left = x + 'px';
+      rewardDiv.style.top = y + 'px';
+      document.body.appendChild(rewardDiv);
+      
+      setTimeout(() => {
+        rewardDiv.remove();
+      }, 2000);
+    }
+
+    function hasSkinOfEachTier() {
+      const tiers = ['basic', 'premium', 'ultra'];
+      return tiers.every(tier => skins.some(skin => skin.tier === tier && inv[skin.id]));
+    }
+
+    // Función de carga con progreso automático
+    async function startLoadingSequence() {
+      const loadingProgress = document.getElementById('loadingProgress');
+      const loadingText = document.getElementById('loadingText');
+      
+      const steps = [
+        { text: "Cargando gráficos...", duration: 800 },
+        { text: "Inicializando controles táctiles...", duration: 600 },
+        { text: "Configurando niveles...", duration: 500 },
+        { text: "Preparando sonidos...", duration: 400 },
+        { text: "¡Listo para jugar!", duration: 300 }
+      ];
+      
+      for (let i = 0; i < steps.length; i++) {
+        loadingText.textContent = steps[i].text;
+        loadingProgress.style.width = ((i + 1) / steps.length) * 100 + '%';
+        await new Promise(resolve => setTimeout(resolve, steps[i].duration));
+      }
+      
+      // Ocultar pantalla de carga y mostrar menú
+      document.getElementById('loadingScreen').style.display = 'none';
+      isGameLoaded = true;
+      openMenu('startMenu');
+    }
+
+    // Persistencia
+    function load() {
+      inv = JSON.parse(localStorage.getItem('inv') || '{}');
+      equipped = localStorage.getItem('equipped') || 'canasta';
+      backgroundsOwned = JSON.parse(localStorage.getItem('backgroundsOwned') || '{"rosa": true}');
+      currentBackground = localStorage.getItem('currentBackground') || 'rosa';
+      fundsOwned = JSON.parse(localStorage.getItem('fundsOwned') || '{}');
+      window.stats = JSON.parse(localStorage.getItem('stats') || '{"hearts":0,"diamonds":0,"arcoiris":0,"losses":0,"games":0,"diamondsCollected":0,"maxTime":0,"backgroundsChanged":0,"rainbowsFound":0}');
+      level = parseInt(localStorage.getItem('level') || '1');
+      activePowers = JSON.parse(localStorage.getItem('activePowers') || '{}');
+      usedPowers = JSON.parse(localStorage.getItem('usedPowers') || 
+                   '{"iman":0,"doblePts":0,"shield":0,"freeze":0}');
+      missionsDoneHearts = JSON.parse(localStorage.getItem('missionsDoneHearts') || '{}');
+      missionsDoneLevels = JSON.parse(localStorage.getItem('missionsDoneLevels') || '{}');
+      missionsDoneSpecial = JSON.parse(localStorage.getItem('missionsDoneSpecial') || '{}');
+      achievementsDone = JSON.parse(localStorage.getItem('achievementsDone') || '{}');
+      
+      // Aplicar fondo actual
+      applyBackground(currentBackground);
+      updateHUD();
+    }
+
+    function save() {
+      localStorage.setItem('inv', JSON.stringify(inv));
+      localStorage.setItem('equipped', equipped);
+      localStorage.setItem('backgroundsOwned', JSON.stringify(backgroundsOwned));
+      localStorage.setItem('currentBackground', currentBackground);
+      localStorage.setItem('fundsOwned', JSON.stringify(fundsOwned));
+      localStorage.setItem('stats', JSON.stringify(stats));
+      localStorage.setItem('level', level);
+      localStorage.setItem('activePowers', JSON.stringify(activePowers));
+      localStorage.setItem('usedPowers', JSON.stringify(usedPowers));
+      localStorage.setItem('missionsDoneHearts', JSON.stringify(missionsDoneHearts));
+      localStorage.setItem('missionsDoneLevels', JSON.stringify(missionsDoneLevels));
+      localStorage.setItem('missionsDoneSpecial', JSON.stringify(missionsDoneSpecial));
+      localStorage.setItem('achievementsDone', JSON.stringify(achievementsDone));
+    }
+
+    function applyBackground(bgId) {
+      const bg = backgrounds.find(b => b.id === bgId);
+      if (bg) {
+        document.body.className = bg.classes;
+        currentBackground = bgId;
+        if (bgId !== 'rosa') stats.backgroundsChanged++;
+        save();
+      }
+    }
+
+    function changeTab(tabId, btn) {
+      const tabContents = btn.closest('.panel').querySelectorAll('.tab-content');
+      tabContents.forEach(tab => tab.classList.remove('active'));
+      const tabButtons = btn.parentElement.querySelectorAll('.tab-btn');
+      tabButtons.forEach(button => button.classList.remove('active'));
+      document.getElementById(tabId).classList.add('active');
+      btn.classList.add('active');
+    }
+
+    // Sistema de partículas
+    function createParticles() {
+      const particles = document.getElementById('particles');
+      const emojis = ['💖', '✨', '🌟', '💫', '🦋', '🌸', '💕'];
+      setInterval(() => {
+        if (Math.random() < 0.1) { // 10% de probabilidad cada 500ms
+          const particle = document.createElement('div');
+          particle.className = 'particle';
+          particle.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+          particle.style.left = Math.random() * 100 + '%';
+          particle.style.animationDuration = (8 + Math.random() * 4) + 's';
+          particles.appendChild(particle);
+          setTimeout(() => particle.remove(), 12000);
+        }
+      }, 500);
+    }
+
+    // Renderizado UI
+    function renderStore() {
+      const g = document.getElementById('storeGrid');
+      g.innerHTML = '';
+      skins.forEach(s => {
+        const d = document.createElement('div');
+        d.className = 'skin-item';
+        if (s.tier === 'premium') d.className += ' premium-skin';
+        if (s.tier === 'ultra') d.className += ' ultra-skin';
+        const btn = document.createElement('button');
+        const own = inv[s.id];
+        const costIcon = s.costType === 'diamond' ? '💎' : s.costType === 'arcoiris' ? '🌈' : '❤️';
+        btn.textContent = s.id === equipped ? '✅ Equipado' : own ? '🎯 Equipar' : `${costIcon} ${s.cost}`;
+        let canBuy = false;
+        if (!own) {
+          if (s.costType === 'diamond') canBuy = stats.diamonds >= s.cost;
+          else if (s.costType === 'arcoiris') canBuy = stats.arcoiris >= s.cost;
+          else canBuy = stats.hearts >= s.cost;
+        }
+        btn.disabled = s.id === equipped || (!own && !canBuy);
+        btn.onclick = () => {
+          if (!own && canBuy) {
+            if (s.costType === 'diamond') stats.diamonds -= s.cost;
+            else if (s.costType === 'arcoiris') stats.arcoiris -= s.cost;
+            else stats.hearts -= s.cost;
+            inv[s.id] = true;
+            showFlashMessage(`¡Has comprado ${s.name}! 🎉`);
+          }
+          equipped = s.id;
+          save();
+          renderAll();
+        };
+        d.innerHTML = `
+          <div style="font-size:2.5rem">${s.emoji}</div>
+          <div style="font-size:0.8rem;font-weight:bold">${s.name}</div>
+        `;
+        d.appendChild(btn);
+        g.appendChild(d);
+      });
+    }
+
+    function renderArcoiris() {
+      const g = document.getElementById('fundsGrid');
+      g.innerHTML = '';
+      arcoirisFunds.forEach(f => {
+        const d = document.createElement('div');
+        d.className = 'skin-item';
+        const btn = document.createElement('button');
+        const costIcon = f.costType === 'diamond' ? '💎' : '❤️';
+        
+        // Arreglo: Cambiar la lógica para permitir compras múltiples
+        // Ya no usamos fundsOwned para verificar si un paquete fue comprado
+        // Sólo verificamos si tenemos suficientes recursos para comprar
+        let canBuy = false;
+        if (f.costType === 'diamond') canBuy = stats.diamonds >= f.cost;
+        else canBuy = stats.hearts >= f.cost;
+        
+        btn.textContent = `${costIcon} ${f.cost}`;
+        btn.disabled = !canBuy;
+        
+        btn.onclick = () => {
+          if (canBuy) {
+            if (f.costType === 'diamond') stats.diamonds -= f.cost;
+            else stats.hearts -= f.cost;
+            stats.arcoiris += f.reward;
+            
+            // Registramos la compra para estadísticas, pero no bloqueamos futuras compras
+            fundsOwned[f.id] = (fundsOwned[f.id] || 0) + 1;
+            
+            save();
+            renderAll();
+            
+            // Mostrar mensaje de compra exitosa
+            showFlashMessage(`¡Has comprado ${f.reward} arcoíris! 🌈✨`);
+            showRewardAnimation(event.clientX, event.clientY, `+${f.reward} 🌈`);
+          }
+        };
+        
+        d.innerHTML = `
+          <div style="font-size:1.1rem;font-weight:bold">${f.name}</div>
+          <div style="color:#777;margin:5px 0">+${f.reward} 🌈</div>
+        `;
+        d.appendChild(btn);
+        g.appendChild(d);
+      });
+    }
+
+    function renderBackgrounds() {
+      const g = document.getElementById('backgroundGrid');
+      g.innerHTML = '';
+      backgrounds.forEach(bg => {
+        const d = document.createElement('div');
+        d.className = 'background-item';
+        const btn = document.createElement('button');
+        const own = backgroundsOwned[bg.id];
+        const costIcon = bg.costType === 'diamond' ? '💎' : bg.costType === 'arcoiris' ? '🌈' : '❤️';
+        const isActive = currentBackground === bg.id;
+        btn.textContent = isActive ? '🎨 Activo' : own ? '🌟 Usar' : `${costIcon} ${bg.cost}`;
+        let canBuy = false;
+        if (!own) {
+          if (bg.costType === 'diamond') canBuy = stats.diamonds >= bg.cost;
+          else if (bg.costType === 'arcoiris') canBuy = stats.arcoiris >= bg.cost;
+          else canBuy = stats.hearts >= bg.cost;
+        }
+        btn.disabled = isActive || (!own && !canBuy);
+        btn.onclick = () => {
+          if (!own && canBuy) {
+            if (bg.costType === 'diamond') stats.diamonds -= bg.cost;
+            else if (bg.costType === 'arcoiris') stats.arcoiris -= bg.cost;
+            else stats.hearts -= bg.cost;
+            backgroundsOwned[bg.id] = true;
+            showFlashMessage(`¡Has comprado el fondo ${bg.name}! 🎨`);
+          }
+          if (own || canBuy) {
+            applyBackground(bg.id);
+            renderAll();
+          }
+        };
+        d.innerHTML = `
+          <div style="font-size:1rem;font-weight:bold">${bg.name}</div>
+          <div style="height:40px;border-radius:8px;margin:5px 0" class="${bg.classes}"></div>
+        `;
+        d.appendChild(btn);
+        g.appendChild(d);
+      });
+    }
+
+    function renderPowers() {
+      const g = document.getElementById('powerGrid');
+      const now = Date.now();
+      g.innerHTML = '';
+      powers.forEach(p => {
+        const active = activePowers[p.id] > now;
+        const timeLeft = active ? Math.ceil((activePowers[p.id] - now) / 1000) : 0;
+        const d = document.createElement('div');
+        d.className = 'skin-item premium-skin';
+        const btn = document.createElement('button');
+        btn.textContent = active ? `⏰ Activo (${timeLeft}s)` : `💎 ${p.cost}`;
+        btn.disabled = active || stats.diamonds < p.cost;
+        btn.onclick = () => {
+          if (!active && stats.diamonds >= p.cost) {
+            stats.diamonds -= p.cost;
+            activePowers[p.id] = now + p.duration;
+            usedPowers[p.id]++;
+            save();
+            renderAll();
+            showFlashMessage(`¡Has activado ${p.name}! ✨`);
+            const timerId = setInterval(() => {
+              const current = Date.now();
+              const remaining = activePowers[p.id] - current;
+              if (remaining <= 0) {
+                clearInterval(timerId);
+                delete activePowers[p.id];
+                save();
+                renderAll();
+                updatePowerTimers();
+                showFlashMessage(`¡${p.name} ha terminado!`);
+              } else {
+                updatePowerTimers();
+              }
+            }, 1000);
+          }
+        };
+        const duration = p.duration / 1000;
+        d.innerHTML = `
+          <div style="font-size:1.2rem;font-weight:bold">${p.name}</div>
+          <small style="color:#666">${p.desc}</small>
+        `;
+        d.appendChild(btn);
+        g.appendChild(d);
+      });
+    }
+
+    function renderAchievements() {
+      const ul = document.getElementById('achievementsList');
+      ul.innerHTML = '';
+      achievements.forEach(a => {
+        const wasCompleted = achievementsDone[a.id];
+        if (!wasCompleted && a.cond()) {
+          stats.diamonds += a.reward;
+          achievementsDone[a.id] = true;
+          save();
+          showFlashMessage(`¡Logro desbloqueado: ${a.desc}! +${a.reward} 💎`);
+        }
+        
+        const li = document.createElement('li');
+        li.style.cssText = 'padding:8px;margin:4px 0;border-radius:8px;background:rgba(255,255,255,0.1);';
+        if (!wasCompleted && achievementsDone[a.id]) {
+          li.classList.add('achievement-complete');
+        }
+        li.innerHTML = `
+          <span style="font-size:1.2rem">${achievementsDone[a.id] ? '🏆' : '⬜'}</span>
+          ${a.desc} 
+          <span style="color:gold;font-weight:bold">(+${a.reward} 💎)</span>
+        `;
+        ul.appendChild(li);
+      });
+    }
+
+    function renderHeartMissions() {
+      const ul = document.getElementById('missionsHeartsList');
+      ul.innerHTML = '';
+      heartMissions.forEach(m => {
+        const wasCompleted = missionsDoneHearts[m.id];
+        if (!wasCompleted && m.cond()) {
+          stats.diamonds += m.reward;
+          missionsDoneHearts[m.id] = true;
+          save();
+          showFlashMessage(`¡Misión completada: ${m.desc}! +${m.reward} 💎`);
+        }
+        
+        const li = document.createElement('li');
+        li.style.cssText = 'padding:8px;margin:4px 0;border-radius:8px;background:rgba(255,255,255,0.1);';
+        if (!wasCompleted && missionsDoneHearts[m.id]) {
+          li.classList.add('achievement-complete');
+        }
+        li.innerHTML = `
+          <span style="font-size:1.2rem">${missionsDoneHearts[m.id] ? '✅' : '🎯'}</span>
+          ${m.desc} 
+          <span style="color:gold;font-weight:bold">(+${m.reward} 💎)</span>
+        `;
+        ul.appendChild(li);
+      });
+    }
+
+    function renderLevelMissions() {
+      const ul = document.getElementById('missionsLevelsList');
+      ul.innerHTML = '';
+      levelMissions.forEach(m => {
+        const wasCompleted = missionsDoneLevels[m.id];
+        if (!wasCompleted && m.cond()) {
+          stats.diamonds += m.reward;
+          missionsDoneLevels[m.id] = true;
+          save();
+          showFlashMessage(`¡Misión completada: ${m.desc}! +${m.reward} 💎`);
+        }
+        
+        const li = document.createElement('li');
+        li.style.cssText = 'padding:8px;margin:4px 0;border-radius:8px;background:rgba(255,255,255,0.1);';
+        if (!wasCompleted && missionsDoneLevels[m.id]) {
+          li.classList.add('achievement-complete');
+        }
+        li.innerHTML = `
+          <span style="font-size:1.2rem">${missionsDoneLevels[m.id] ? '✅' : '🏔️'}</span>
+          ${m.desc} 
+          <span style="color:gold;font-weight:bold">(+${m.reward} 💎)</span>
+        `;
+        ul.appendChild(li);
+      });
+    }
+
+    function renderSpecialMissions() {
+      const ul = document.getElementById('missionsSpecialList');
+      ul.innerHTML = '';
+      specialMissions.forEach(m => {
+        const wasCompleted = missionsDoneSpecial[m.id];
+        if (!wasCompleted && m.cond()) {
+          stats.diamonds += m.reward;
+          missionsDoneSpecial[m.id] = true;
+          save();
+          showFlashMessage(`¡Misión especial completada: ${m.desc}! +${m.reward} 💎`);
+        }
+        
+        const li = document.createElement('li');
+        li.style.cssText = 'padding:8px;margin:4px 0;border-radius:8px;background:rgba(255,255,255,0.1);';
+        if (!wasCompleted && missionsDoneSpecial[m.id]) {
+          li.classList.add('achievement-complete');
+        }
+        li.innerHTML = `
+          <span style="font-size:1.2rem">${missionsDoneSpecial[m.id] ? '🌟' : '⭐'}</span>
+          ${m.desc} 
+          <span style="color:gold;font-weight:bold">(+${m.reward} 💎)</span>
+        `;
+        ul.appendChild(li);
+      });
+    }
+
+    function renderStats() {
+      const ul = document.getElementById('statsList');
+      ul.innerHTML = '';
+      [
+        ['❤️ Corazones totales', stats.hearts],
+        ['💎 Diamantes actuales', stats.diamonds],
+        ['🌈 Arcoíris mágicos', stats.arcoiris],
+        ['🏆 Nivel actual', level],
+        ['🎮 Partidas jugadas', stats.games],
+        ['💎 Diamantes recolectados', stats.diamondsCollected],
+        ['⏱️ Tiempo récord (s)', stats.maxTime],
+        ['🔄 Fondos cambiados', stats.backgroundsChanged],
+        ['🌈 Arcoíris encontrados', stats.rainbowsFound],
+        ['💔 Derrotas', stats.losses],
+        // Nuevas estadísticas
+        ['🔮 Poderes usados', Object.values(usedPowers).reduce((a, b) => a + b, 0)],
+        ['🎁 Paquetes comprados', Object.values(fundsOwned).reduce((a, b) => a + b, 0)],
+        ['👕 Skins coleccionadas', Object.keys(inv).length],
+        ['🎨 Fondos desbloqueados', Object.keys(backgroundsOwned).length]
+      ].forEach(([k, v]) => {
+        const li = document.createElement('li');
+        li.style.cssText = 'padding:6px;margin:3px 0;border-radius:6px;background:rgba(255,255,255,0.1);font-weight:bold;';
+        li.textContent = k + ': ' + v;
+        ul.appendChild(li);
+      });
+    }
+
+    function renderAll() {
+      renderStore();
+      renderArcoiris();
+      renderBackgrounds();
+      renderPowers();
+      renderAchievements();
+      renderHeartMissions();
+      renderLevelMissions();
+      renderSpecialMissions();
+      renderStats();
+      updateHUD();
+    }
+
+    function heartsNeeded(l) {
+      return 10 + (l - 1) * 3;
+    }
+
+    function updatePowerTimers() {
+      const now = Date.now();
+      
+      // Arreglar: verificar escudo correctamente
+      shield = activePowers.shield && activePowers.shield > now;
+      
+      if (shield) {
+        document.getElementById('shieldIcon').style.display = 'block';
+        document.getElementById('shieldTimer').style.display = 'block';
+        const remaining = Math.ceil((activePowers.shield - now) / 1000);
+        document.getElementById('shieldTimer').textContent = remaining + 's';
+      } else {
+        document.getElementById('shieldIcon').style.display = 'none';
+        document.getElementById('shieldTimer').style.display = 'none';
+      }
+      
+      // Imán
+      if (activePowers.iman && activePowers.iman > now) {
+        document.getElementById('imanIcon').style.display = 'block';
+        document.getElementById('imanTimer').style.display = 'block';
+        const remaining = Math.ceil((activePowers.iman - now) / 1000);
+        document.getElementById('imanTimer').textContent = remaining + 's';
+      } else {
+        document.getElementById('imanIcon').style.display = 'none';
+        document.getElementById('imanTimer').style.display = 'none';
+      }
+      
+      // Doble puntos
+      if (activePowers.doblePts && activePowers.doblePts > now) {
+        document.getElementById('dblIcon').style.display = 'block';
+        document.getElementById('dblTimer').style.display = 'block';
+        const remaining = Math.ceil((activePowers.doblePts - now) / 1000);
+        document.getElementById('dblTimer').textContent = remaining + 's';
+      } else {
+        document.getElementById('dblIcon').style.display = 'none';
+        document.getElementById('dblTimer').style.display = 'none';
+      }
+      
+      // Nuevo: Freeze
+      if (activePowers.freeze && activePowers.freeze > now) {
+        document.getElementById('freezeIcon').style.display = 'block';
+        document.getElementById('freezeTimer').style.display = 'block';
+        const remaining = Math.ceil((activePowers.freeze - now) / 1000);
+        document.getElementById('freezeTimer').textContent = remaining + 's';
+      } else {
+        document.getElementById('freezeIcon').style.display = 'none';
+        document.getElementById('freezeTimer').style.display = 'none';
+      }
+      
+
+    }
+
+    function updateHUD() {
+      document.getElementById('diamondBar').textContent = '💎: ' + stats.diamonds;
+      document.getElementById('heartBar').textContent = '❤️: ' + heartsThisLevel;
+      document.getElementById('totalHeartsBar').textContent = '💗 Total: ' + stats.hearts;
+      document.getElementById('arcoirisBar').textContent = '🌈: ' + stats.arcoiris;
+      document.getElementById('levelInfo').textContent = 'Nivel ' + level + ' - ' + (heartsNeeded(level) - heartsThisLevel) + ' ❤️ faltantes';
+      
+      const lb = document.getElementById('lifeBar');
+      lb.innerHTML = '';
+      for (let i = 0; i < lives; i++) {
+        const img = document.createElement('img');
+        img.src = 'https://cdn-icons-png.flaticon.com/512/833/833472.png';
+        lb.appendChild(img);
+      }
+      
+      updatePowerTimers();
+    }
+
+    // Paneles
+    const panels = ['startMenu', 'shopMenu', 'powerMenu', 'logrosMenu', 'missionMenu', 'statsMenu', 'pauseMenu', 'gameOverMenu', 'levelUpMenu'];
+    
+    function openMenu(id) {
+      if (!isGameLoaded && id !== 'startMenu') return;
+      
+      panels.forEach(p => document.getElementById(p).style.display = (p === id ? 'block' : 'none'));
+      document.getElementById('pauseBtn').style.display = (id === null ? 'block' : 'none');
+      
+      if (id !== null) {
+        running = false;
+        paused = true;
+      }
+      
+      renderAll();
+    }
+
+    function returnToMenu() {
+      save();
+      openMenu('startMenu');
+    }
+
+    function continuePlaying() {
+      paused = false;
+      running = true;
+      openMenu(null);
+      dropTimer = 0; // Reiniciar el temporizador de caída para que comience de inmediato
+      requestAnimationFrame(loop);
+    }
+
+    // Lógica de juego
+    const cvs = document.getElementById('gameCanvas'),
+          ctx = cvs.getContext('2d');
+
+    function resize() {
+      cvs.width = innerWidth;
+      cvs.height = innerHeight;
+      playerX = innerWidth / 2;
+    }
+
+    // Controles del jugador mejorados con soporte táctil
+    function setupControls() {
+      // Mouse controls - Mejorado para ser más responsive
+      window.addEventListener('mousemove', e => {
+        if (running && !paused) {
+          playerX = e.clientX;
+          
+          // Mantener el jugador dentro de los límites
+          if (playerX < 20) playerX = 20;
+          if (playerX > cvs.width - 20) playerX = cvs.width - 20;
+        }
+      });
+
+      // También agregar control con teclado como respaldo
+      window.addEventListener('keydown', e => {
+        if (!running || paused) return;
+        
+        if (e.key === 'ArrowLeft' || e.key === 'a' || e.key === 'A') {
+          playerX -= 20; // Mover a la izquierda
+          if (playerX < 20) playerX = 20;
+        } else if (e.key === 'ArrowRight' || e.key === 'd' || e.key === 'D') {
+          playerX += 20; // Mover a la derecha
+          if (playerX > cvs.width - 20) playerX = cvs.width - 20;
+        }
+      });
+
+      // Touch controls para móviles - Mejorado para mayor responsividad
+      cvs.addEventListener('touchstart', (e) => {
+        e.preventDefault();
+        if (!running || paused) return;
+        
+        const touch = e.touches[0];
+        const rect = cvs.getBoundingClientRect();
+        touchStartX = touch.clientX - rect.left;
+        playerX = touchStartX;
+        isDragging = true;
+      }, { passive: false });
+
+      cvs.addEventListener('touchmove', (e) => {
+        e.preventDefault();
+        if (!running || paused || !isDragging) return;
+        
+        const touch = e.touches[0];
+        const rect = cvs.getBoundingClientRect();
+        playerX = touch.clientX - rect.left;
+        
+        // Mantener el jugador dentro de los límites
+        if (playerX < 20) playerX = 20;
+        if (playerX > cvs.width - 20) playerX = cvs.width - 20;
+      }, { passive: false });
+
+      cvs.addEventListener('touchend', (e) => {
+        e.preventDefault();
+        isDragging = false;
+      }, { passive: false });
+
+      // Prevenir zoom en doble tap
+      cvs.addEventListener('touchstart', (e) => {
+        if (e.touches.length > 1) {
+          e.preventDefault();
+        }
+      }, { passive: false });
+
+      let lastTouchEnd = 0;
+      cvs.addEventListener('touchend', (e) => {
+        const now = (new Date()).getTime();
+        if (now - lastTouchEnd <= 300) {
+          e.preventDefault();
+        }
+        lastTouchEnd = now;
+      }, false);
+    }
+
+    window.addEventListener('resize', resize);
+
+    function startGame() {
+      if (!isGameLoaded) return;
+      
+      load();
+      items = [];
+      lives = 3;
+      shield = false;
+      heartsThisLevel = 0;
+      running = true;
+      paused = false;
+      dropTimer = 0;
+      gameStartTime = Date.now();
+      gameTime = 0;
+      stats.games++;
+      save();
+      resize();
+      renderAll();
+      openMenu(null);
+      requestAnimationFrame(loop);
+    }
+
+    function pauseGame() {
+      paused = true;
+      save();
+      openMenu('pauseMenu');
+      dropTimer = 0;
+    }
+
+    function resumeGame() {
+      paused = false;
+      running = true; // Asegurar que el juego sigue ejecutándose
+      openMenu(null);
+      dropTimer = 0; // Reiniciar el temporizador de caída
+      gameStartTime = Date.now() - (gameTime * 1000); // Mantener el tiempo de juego correcto
+      requestAnimationFrame(loop);
+    }
+
+    function retryGame() {
+      startGame();
+    }
+
+    function levelUp() {
+      paused = true;
+      // Vaciar los items existentes para evitar problemas de colisiones al reanudar
+      items = [];
+      document.getElementById('newLevel').textContent = level;
+      openMenu('levelUpMenu');
+    }
+
+    function loop(ts) {
+      if (!running || paused) return;
+      
+      if (!dropTimer) dropTimer = ts;
+      gameTime = Math.floor((Date.now() - gameStartTime) / 1000);
+      
+      // Asegurar que el juego siga ejecutándose correctamente
+      if (gameTime > stats.maxTime) {
+        stats.maxTime = gameTime;
+        save();
+      }
+      
+      // Actualizar HUD cada frame para asegurar que la información esté siempre actualizada
+      updateHUD();
+      
+      // Velocidad normal de caída, freeze ya no afecta a esto
+      const dropSpeed = 800;
+      
+      if (ts - dropTimer > dropSpeed) {
+        let r = Math.random(),
+            type = 'heart',
+            emoji = '❤️';
+            
+        // Arcoíris muy raro (0.1% de probabilidad)
+        if (r < 0.001) { type = 'rainbow'; emoji = '🌈'; }
+        else if (r < 0.02) { type = 'diamond'; emoji = '💎'; }
+        // Congelación con la misma probabilidad que diamantes (2%)
+        else if (r < 0.04) { type = 'freeze'; emoji = '❄️'; }
+        else if (r < 0.15) { 
+            type = 'bomb'; 
+            emoji = '💣';
+        }
+        else if (r < 0.25) { type = 'shield'; emoji = '🛡️'; }
+        
+        items.push({
+          x: Math.random() * (cvs.width - 40) + 20,
+          y: -30,
+          speed: 1.5 + Math.random() * 0.5,
+          type, emoji
+        });
+        
+        dropTimer = ts;
+      }
+      
+      ctx.clearRect(0, 0, cvs.width, cvs.height);
+      
+      // Imán atrae
+      if (activePowers.iman && activePowers.iman > Date.now()) {
+        items.forEach(it => {
+          if (it.type === 'heart' || it.type === 'diamond' || it.type === 'rainbow') {
+            it.x += (playerX - it.x) * 0.1;
+            it.y += ((cvs.height - 90) - it.y) * 0.1;
+          }
+        });
+      }
+      
+      // Dibujar jugador
+      ctx.save();
+      ctx.translate(playerX, cvs.height - 90);
+      
+      ctx.font = '32px sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText(skins.find(s => s.id === equipped).emoji, 0, 0);
+      
+      // Efecto de escudo visual
+      if (shield) {
+        ctx.beginPath();
+        ctx.arc(0, 0, 40, 0, Math.PI * 2);
+        ctx.strokeStyle = "rgba(100, 200, 255, 0.6)";
+        ctx.lineWidth = 5;
+        ctx.stroke();
+      }
+      
+      ctx.restore();
+      
+      // Dibujar y colisiones
+      for (let i = 0; i < items.length; i++) {
+        const it = items[i];
+        
+        // Ajustar velocidad solo para bombas si freeze está activo
+        const freezeActive = activePowers.freeze && activePowers.freeze > Date.now();
+        if (it.type === 'bomb' && freezeActive) {
+          it.y += it.speed * 0.3; // Bombas mucho más lentas con freeze
+        } else {
+          it.y += it.speed;
+        }
+        
+        ctx.save();
+        ctx.font = '24px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText(it.emoji, it.x, it.y);
+        ctx.restore();
+        
+        if (it.y > cvs.height) {
+          items.splice(i--, 1);
+          continue;
+        }
+        
+        // Colisión con distancia estándar
+        const collisionDistance = 30;
+        
+        if (Math.hypot(it.x - playerX, it.y - (cvs.height - 90)) < collisionDistance) {
+          if (it.type === 'shield') {
+            shield = true;
+            activePowers.shield = Date.now() + 30000; // 30 segundos para escudos recogidos en juego
+            setTimeout(() => {
+              shield = false;
+              delete activePowers.shield;
+              updateHUD();
+            }, 30000);
+            usedPowers.shield++;
+            showRewardAnimation(it.x, it.y, "🛡️ ¡Escudo Activo! (30s)");
+          } else if (it.type === 'bomb') {
+            // Arreglo: comprobar correctamente si el escudo está activo
+            if (shield) {
+              shield = false;
+              delete activePowers.shield;
+              showFlashMessage("¡El escudo te ha protegido! 🛡️");
+            } else {
+              lives--;
+              stats.losses++;
+              showFlashMessage("¡Cuidado con las bombas! 💣");
+              if (lives <= 0) {
+                running = false;
+                openMenu('gameOverMenu');
+                save();
+                return;
+              }
+            }
+          } else if (it.type === 'diamond') {
+            let gain = (activePowers.doblePts && activePowers.doblePts > Date.now()) ? 2 : 1;
+            stats.diamonds += gain;
+            stats.diamondsCollected += gain;
+            score += gain;
+            showRewardAnimation(it.x, it.y, `+${gain} 💎`);
+          } else if (it.type === 'rainbow') {
+            // ¡Arcoíris especial encontrado!
+            let gain = (activePowers.doblePts && activePowers.doblePts > Date.now()) ? 2 : 1;
+            stats.arcoiris += gain;
+            stats.rainbowsFound += gain;
+            score += gain * 5; // Más puntos por arcoíris
+            showRewardAnimation(it.x, it.y, `+${gain} 🌈`);
+            showFlashMessage("¡Has encontrado un arcoíris especial! 🌈✨");
+          } else if (it.type === 'freeze') {
+            activePowers.freeze = Date.now() + 30000; // Duración de 30 segundos
+            usedPowers.freeze++;
+            showRewardAnimation(it.x, it.y, "❄️ ¡Congelación Activada!");
+            showFlashMessage("¡Poder de Congelación! Bombas ralentizadas por 30s ❄️");
+            setTimeout(() => {
+              delete activePowers.freeze;
+              updateHUD();
+              showFlashMessage("¡Poder de Congelación terminado!");
+            }, 30000);
+          } else if (it.type === 'heart') {
+            let gain = (activePowers.doblePts && activePowers.doblePts > Date.now()) ? 2 : 1;
+            stats.hearts += gain;
+            heartsThisLevel += gain;
+            score += gain;
+            showRewardAnimation(it.x, it.y, `+${gain} ❤️`);
+            
+            if (heartsThisLevel >= heartsNeeded(level)) {
+              heartsThisLevel = 0;
+              level++;
+              save();
+              levelUp();
+              items.splice(i--, 1);
+              updateHUD();
+              return;
+            }
+          }
+          
+          items.splice(i--, 1);
+          updateHUD();
+        }
+      }
+      
+      requestAnimationFrame(loop);
+    }
+
+    // Inicializar todo
+    window.onload = () => {
+      resize();
+      load();
+      setupControls();
+      createParticles();
+      
+      // Asegurar que el fondo rosa está desbloqueado por defecto
+      if (!backgroundsOwned.rosa) {
+        backgroundsOwned.rosa = true;
+        save();
+      }
+      
+      // Iniciar secuencia de carga
+      startLoadingSequence();
+    };
+  </script>
+
+</body></html>
